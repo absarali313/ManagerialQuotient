@@ -1,0 +1,242 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+env:
+  APP_NAME: ManagerialQuotient
+  APP_ENV: testing
+  APP_DEBUG: true
+  APP_URL: http://localhost
+  DB_CONNECTION: mysql
+  DB_HOST: 127.0.0.1
+  DB_PORT: 3306
+  DB_DATABASE: managerialquotient_test
+  DB_USERNAME: root
+  DB_PASSWORD: root
+
+jobs:
+  lint-and-test:
+    name: Lint, Build & Test
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_DATABASE: managerialquotient_test
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: root
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      # 1. Checkout Repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Setup PHP
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_mysql, bcmath, json, curl
+          tools: composer
+          coverage: xdebug
+
+      # 3. Cache Composer Dependencies
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      # 4. Install PHP Dependencies
+      - name: Install PHP Dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+        continue-on-error: true
+
+      # 5. Setup Node.js
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # 6. Install Node Dependencies
+      - name: Install Node Dependencies
+        run: npm install --legacy-peer-deps
+        continue-on-error: true
+
+      # 7. Copy .env file
+      - name: Copy .env File
+        run: cp .env.example .env
+
+      # 8. Generate Application Key
+      - name: Generate Application Key
+        run: php artisan key:generate
+
+      # 9. Wait for MySQL
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h"127.0.0.1" -u"root" -p"root" 2>/dev/null; then
+              echo "MySQL is up!"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 1
+          done
+
+      # 10. Run Database Migrations
+      - name: Run Database Migrations
+        run: php artisan migrate --force
+
+      # 11. Check PHP Code Formatting with Pint
+      - name: Check Code Formatting with Pint
+        run: ./vendor/bin/pint --test
+        continue-on-error: true
+
+      # 12. Run Pest Tests
+      - name: Run Pest Tests
+        run: php artisan test --parallel
+        continue-on-error: false
+
+      # 13. Build Frontend Assets
+      - name: Build Frontend Assets
+        run: npm run build
+        continue-on-error: true
+
+      # 14. Check PHP Security Issues
+      - name: Check Composer Security
+        run: composer audit --no-interaction
+        continue-on-error: true
+
+      # 15. Check npm Security Issues
+      - name: Check npm Security
+        run: npm audit --omit=dev || true
+        continue-on-error: true
+
+      # 16. Generate Test Coverage Report (Optional)
+      - name: Generate Coverage Report
+        run: php artisan test --coverage
+        continue-on-error: true
+
+      # 17. Upload Coverage to Codecov (Optional)
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: false
+        continue-on-error: true
+
+      # 18. Summary
+      - name: CI/CD Workflow Summary
+        if: always()
+        run: |
+          echo "✅ CI/CD Workflow Complete!"
+          echo "📊 Status: ${{ job.status }}"
+          echo "📝 Commit: ${{ github.sha }}"
+          echo "🔗 Repository: ${{ github.repository }}"
+
+  code-quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install PHP Dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+        continue-on-error: true
+
+      # Optional: Add PHPStan for static analysis
+      - name: Run PHPStan Static Analysis
+        run: composer analyze 2>/dev/null || echo "PHPStan not configured"
+        continue-on-error: true
+
+  notification:
+    name: Send Workflow Status Notification
+    runs-on: ubuntu-latest
+    needs: [lint-and-test, code-quality]
+    if: always()
+    
+    steps:
+      - name: Check Job Status
+        run: |
+          if [ "${{ needs.lint-and-test.result }}" == "success" ] && [ "${{ needs.code-quality.result }}" == "success" ]; then
+            echo "✅ All checks passed!"
+            exit 0
+          else
+            echo "⚠️ Some checks failed or were skipped"
+            exit 1
+          fi
+        continue-on-error: true
+
+      # Optional: Slack notification
+      - name: Notify Slack on Failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "❌ CI/CD Pipeline Failed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Repository: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nCommit: ${{ github.sha }}\nAuthor: ${{ github.actor }}"
+                  }
+                }
+              ]
+            }
+        continue-on-error: true
+
+      - name: Notify Slack on Success
+        if: success()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "✅ CI/CD Pipeline Passed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Repository: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nCommit: ${{ github.sha }}\nAuthor: ${{ github.actor }}"
+                  }
+                }
+              ]
+            }
+        continue-on-error: true
