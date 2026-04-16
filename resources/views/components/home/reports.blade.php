@@ -6,48 +6,31 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <!-- Report Card 1 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group cursor-pointer">
-                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <x-ui.report-card title="Executive Summary" description="High-level overview of org performance." iconColor="blue">
+                <x-slot:icon>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                </div>
-                <h4 class="font-bold text-gray-900 mb-2">Executive Summary</h4>
-                <p class="text-sm text-gray-500 mb-4">High-level overview of org performance.</p>
-                <span class="text-blue-600 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">View Sample <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
-            </div>
-
-            <!-- Report Card 2 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group cursor-pointer">
-                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                </x-slot:icon>
+            </x-ui.report-card>
+            
+            <x-ui.report-card title="Training Needs" description="Spot skill gaps to build training programs." iconColor="purple">
+                <x-slot:icon>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                </div>
-                <h4 class="font-bold text-gray-900 mb-2">Training Needs</h4>
-                <p class="text-sm text-gray-500 mb-4">Spot skill gaps to build training programs.</p>
-                <span class="text-purple-600 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">View Sample <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
-            </div>
+                </x-slot:icon>
+            </x-ui.report-card>
 
-            <!-- Report Card 3 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group cursor-pointer">
-                <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                </div>
-                <h4 class="font-bold text-gray-900 mb-2">Performance Reports</h4>
-                <p class="text-sm text-gray-500 mb-4">Deep dive into specific individual goals.</p>
-                <span class="text-green-600 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">View Sample <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
-            </div>
+            <x-ui.report-card title="Performance Reports" description="Deep dive into specific individual goals." iconColor="green">
+                <x-slot:icon>
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </x-slot:icon>
+            </x-ui.report-card>
 
-            <!-- Report Card 4 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group cursor-pointer">
-                <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <x-ui.report-card title="Sentiment Reports" description="Track psychological safety and team morale." iconColor="orange">
+                <x-slot:icon>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                </div>
-                <h4 class="font-bold text-gray-900 mb-2">Sentiment Reports</h4>
-                <p class="text-sm text-gray-500 mb-4">Track psychological safety and team morale.</p>
-                <span class="text-orange-600 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">View Sample <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
-            </div>
+                </x-slot:icon>
+            </x-ui.report-card>
         </div>
 
-        <!-- Wide Card inside -->
         <div class="bg-white rounded-[2rem] border border-gray-100 p-8 lg:p-12 shadow-sm flex flex-col md:flex-row gap-12 items-center justify-between overflow-hidden">
             <div class="max-w-xl">
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Export & Share Reports</h3>

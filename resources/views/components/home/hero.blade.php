@@ -35,18 +35,9 @@
 
                 <!-- Stats -->
                 <div class="flex items-center gap-8 sm:gap-12 border-t border-gray-100 pt-8">
-                    <div>
-                        <h4 class="text-3xl font-extrabold text-gray-900 mb-1">10k+</h4>
-                        <p class="text-sm font-medium text-gray-500">Predicted Data</p>
-                    </div>
-                    <div>
-                        <h4 class="text-3xl font-extrabold text-gray-900 mb-1">500k+</h4>
-                        <p class="text-sm font-medium text-gray-500">Monitored</p>
-                    </div>
-                    <div>
-                        <h4 class="text-3xl font-extrabold text-gray-900 mb-1">98%</h4>
-                        <p class="text-sm font-medium text-gray-500">CSAT Score</p>
-                    </div>
+                    <x-ui.stat-item value="10k+" label="Predicted Data" />
+                    <x-ui.stat-item value="500k+" label="Monitored" />
+                    <x-ui.stat-item value="98%" label="CSAT Score" />
                 </div>
             </div>
 
@@ -106,7 +97,7 @@
                         <div class="space-y-3">
                             <div class="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
                                 <div class="flex items-center gap-3">
-                                    <img src="https://i.pravatar.cc/150?img=1" class="w-10 h-10 rounded-full object-cover shadow-sm bg-gray-100" alt="Avatar">
+                                    <div class="w-10 h-10 rounded-full object-cover shadow-sm bg-gray-200 flex items-center justify-center font-bold text-gray-500 text-sm">SJ</div>
                                     <div>
                                         <p class="text-sm font-bold text-gray-900">Sarah Jenkins</p>
                                         <p class="text-xs text-gray-500 font-medium">Top Performer</p>
@@ -118,7 +109,7 @@
                             </div>
                             <div class="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
                                 <div class="flex items-center gap-3">
-                                    <img src="https://i.pravatar.cc/150?img=2" class="w-10 h-10 rounded-full object-cover shadow-sm bg-gray-100" alt="Avatar">
+                                    <div class="w-10 h-10 rounded-full object-cover shadow-sm bg-gray-200 flex items-center justify-center font-bold text-gray-500 text-sm">DC</div>
                                     <div>
                                         <p class="text-sm font-bold text-gray-900">David Chen</p>
                                         <p class="text-xs text-gray-500 font-medium">Steady Growth</p>

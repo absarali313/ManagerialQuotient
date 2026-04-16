@@ -20,42 +20,18 @@
                 </h3>
                 
                 <ul class="space-y-6 relative z-10">
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 flex-shrink-0 text-red-500">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-red-900">High Turnover / Attrition</p>
-                            <p class="text-red-700/80 text-sm mt-1">Losing top talent due to unrecognized drop in morale and engagement.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 flex-shrink-0 text-red-500">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-red-900">Time-Consuming Reviews</p>
-                            <p class="text-red-700/80 text-sm mt-1">Months spent on manual yearly performance reviews.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 flex-shrink-0 text-red-500">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-red-900">Subjective Decisions</p>
-                            <p class="text-red-700/80 text-sm mt-1">Biased promotions and raises based on recency and favoritism.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 flex-shrink-0 text-red-500">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-red-900">Low Engagement</p>
-                            <p class="text-red-700/80 text-sm mt-1">Employees feel unseen and their impact undervalued.</p>
-                        </div>
-                    </li>
+                    <x-ui.comparison-item type="old" title="High Turnover / Attrition" description="Losing top talent due to unrecognized drop in morale and engagement.">
+                        <x-slot:icon><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.comparison-item>
+                    <x-ui.comparison-item type="old" title="Time-Consuming Reviews" description="Months spent on manual yearly performance reviews.">
+                        <x-slot:icon><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.comparison-item>
+                    <x-ui.comparison-item type="old" title="Subjective Decisions" description="Biased promotions and raises based on recency and favoritism.">
+                        <x-slot:icon><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.comparison-item>
+                    <x-ui.comparison-item type="old" title="Low Engagement" description="Employees feel unseen and their impact undervalued.">
+                        <x-slot:icon><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.comparison-item>
                 </ul>
             </div>
 
@@ -73,42 +49,18 @@
                 </h3>
                 
                 <ul class="space-y-6 relative z-10">
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 flex-shrink-0 text-green-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-green-900">Retain Top Performers</p>
-                            <p class="text-green-800/80 text-sm mt-1">Predict attrition risks and proactively retain your best employees.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 flex-shrink-0 text-green-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-green-900">Fast Performance Analysis</p>
-                            <p class="text-green-800/80 text-sm mt-1">Instant continuous feedback and AI-generated insights.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 flex-shrink-0 text-green-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-green-900">Data-Driven Decisions</p>
-                            <p class="text-green-800/80 text-sm mt-1">Empirical metrics eliminate bias and ensure fairness.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-1 flex-shrink-0 text-green-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-green-900">Boost Engagement</p>
-                            <p class="text-green-800/80 text-sm mt-1">Recognize impact continuously with transparent rankings.</p>
-                        </div>
-                    </li>
+                    <x-ui.comparison-item type="new" title="Retain Top Performers" description="Predict attrition risks and proactively retain your best employees.">
+                        <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.comparison-item>
+                    <x-ui.comparison-item type="new" title="Fast Performance Analysis" description="Instant continuous feedback and AI-generated insights.">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.comparison-item>
+                    <x-ui.comparison-item type="new" title="Data-Driven Decisions" description="Empirical metrics eliminate bias and ensure fairness.">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.comparison-item>
+                    <x-ui.comparison-item type="new" title="Boost Engagement" description="Recognize impact continuously with transparent rankings.">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.comparison-item>
                 </ul>
             </div>
         </div>

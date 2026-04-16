@@ -20,33 +20,17 @@
                 </h3>
                 
                 <ul class="space-y-6 relative z-10">
-                    <li class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm border border-blue-50/50 flex gap-4 items-start">
-                        <div class="mt-1 flex-shrink-0 text-blue-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">Identify Top Performers</p>
-                            <p class="text-gray-600 text-sm mt-1">Know exactly who is driving the most value and results.</p>
-                        </div>
-                    </li>
-                    <li class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm border border-blue-50/50 flex gap-4 items-start">
-                        <div class="mt-1 flex-shrink-0 text-blue-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">Data-Backed Decisions</p>
-                            <p class="text-gray-600 text-sm mt-1">Make salary and promotion insights objective.</p>
-                        </div>
-                    </li>
-                    <li class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm border border-blue-50/50 flex gap-4 items-start">
-                        <div class="mt-1 flex-shrink-0 text-blue-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">Stop Attrition</p>
-                            <p class="text-gray-600 text-sm mt-1">Intervene before key players leave.</p>
-                        </div>
-                    </li>
+                    <x-ui.built-for-item title="Identify Top Performers" description="Know exactly who is driving the most value and results." iconColor="blue">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.built-for-item>
+
+                    <x-ui.built-for-item title="Data-Backed Decisions" description="Make salary and promotion insights objective." iconColor="blue">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.built-for-item>
+
+                    <x-ui.built-for-item title="Stop Attrition" description="Intervene before key players leave." iconColor="blue">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.built-for-item>
                 </ul>
             </div>
 
@@ -64,33 +48,17 @@
                 </h3>
                 
                 <ul class="space-y-6 relative z-10">
-                    <li class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm border border-green-50/50 flex gap-4 items-start">
-                        <div class="mt-1 flex-shrink-0 text-green-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">Know Your Impact</p>
-                            <p class="text-gray-600 text-sm mt-1">Gain fair visibility across all your efforts and work.</p>
-                        </div>
-                    </li>
-                    <li class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm border border-green-50/50 flex gap-4 items-start">
-                        <div class="mt-1 flex-shrink-0 text-green-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">Fair Assessments</p>
-                            <p class="text-gray-600 text-sm mt-1">Get reviewed strictly on output without biases.</p>
-                        </div>
-                    </li>
-                    <li class="bg-white/80 backdrop-blur rounded-2xl p-4 md:p-6 shadow-sm border border-green-50/50 flex gap-4 items-start">
-                        <div class="mt-1 flex-shrink-0 text-green-500">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                        </div>
-                        <div>
-                            <p class="font-bold text-gray-900">Career Trajectory</p>
-                            <p class="text-gray-600 text-sm mt-1">Get a clear path and requirements for your next promotion.</p>
-                        </div>
-                    </li>
+                    <x-ui.built-for-item title="Know Your Impact" description="Gain fair visibility across all your efforts and work." iconColor="green">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.built-for-item>
+
+                    <x-ui.built-for-item title="Fair Assessments" description="Get reviewed strictly on output without biases." iconColor="green">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.built-for-item>
+
+                    <x-ui.built-for-item title="Career Trajectory" description="Get a clear path and requirements for your next promotion." iconColor="green">
+                         <x-slot:icon><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></x-slot:icon>
+                    </x-ui.built-for-item>
                 </ul>
             </div>
         </div>
