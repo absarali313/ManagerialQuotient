@@ -3,18 +3,22 @@
         <!-- Header Section -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="space-y-1">
-                <h2 class="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
-                    Organization <span class="text-gradient">Intelligence</span>
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900">
+                    Organization Intelligence
                 </h2>
-                <p class="text-zinc-500 dark:text-zinc-400 font-medium">Real-time performance metrics and AI-driven insights.</p>
+                <p class="text-slate-500 font-medium text-sm">Real-time performance metrics and AI-driven insights.</p>
             </div>
             <div class="flex items-center gap-3">
-                <button class="px-5 py-2.5 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl text-sm font-bold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-700/50 transition-all shadow-sm">
+                <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all shadow-sm">
                     <svg class="w-4 h-4 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                     Export Report
                 </button>
+                <button class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-bold hover:bg-emerald-700 transition-all shadow-sm">
+                    <svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    Create Assessment
+                </button>
                 <button class="mq-button-primary">
-                    <svg class="w-4 h-4 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    <svg class="w-4 h-4 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                     New Cycle
                 </button>
             </div>
@@ -40,9 +44,9 @@
             <!-- KPI Radar Chart (New) -->
             <div class="glass-card lg:col-span-2">
                 <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 italic">Competency Breakdown</h3>
+                    <h3 class="text-lg font-bold text-slate-900">Competency Breakdown</h3>
                     <div class="flex gap-2">
-                        <span class="mq-badge bg-emerald-100 text-emerald-700 text-[9px]">Decision Making ↑ 12%</span>
+                        <span class="mq-badge bg-emerald-50 text-emerald-700 text-[9px] border border-emerald-200">Decision Making ↑ 12%</span>
                     </div>
                 </div>
                 <div class="h-64">
@@ -51,7 +55,7 @@
             </div>
 
             <!-- AI Insight Card -->
-            <div class="glass-card lg:col-span-1 bg-gradient-to-br from-indigo-600 to-purple-700 !text-white border-none shadow-indigo-500/20">
+            <div class="glass-card lg:col-span-1 bg-blue-600 !text-white border-none shadow-sm">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="p-2 bg-white/20 rounded-lg backdrop-blur-md">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -81,27 +85,22 @@
                     </h3>
                     <span class="text-[10px] font-bold text-indigo-500 uppercase">Top 10%</span>
                 </div>
-                <div class="divide-y divide-zinc-100 dark:divide-zinc-800">
-                    @foreach([
-                        ['name' => 'Sarah Jenkins', 'mq' => 96, 'trend' => '+2.4%', 'avatar' => 'SJ'],
-                        ['name' => 'Alice Smith', 'mq' => 92, 'trend' => '+1.1%', 'avatar' => 'AS'],
-                        ['name' => 'Michael Chen', 'mq' => 89, 'trend' => '-0.5%', 'avatar' => 'MC'],
-                        ['name' => 'David Wilson', 'mq' => 87, 'trend' => '+4.2%', 'avatar' => 'DW'],
-                    ] as $index => $t)
-                    <div class="p-4 flex items-center justify-between hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
+                <div class="divide-y divide-slate-100">
+                    @foreach($users->take(4) as $index => $u)
+                    <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
                         <div class="flex items-center gap-3">
-                            <span class="text-xs font-black text-zinc-300 w-4">{{ $index + 1 }}</span>
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-[10px] font-bold text-white shadow-md">
-                                {{ $t['avatar'] }}
+                            <span class="text-xs font-bold text-slate-300 w-4">{{ $index + 1 }}</span>
+                            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-700 shadow-sm">
+                                {{ strtoupper(substr($u->name, 0, 2)) }}
                             </div>
                             <div>
-                                <h4 class="text-sm font-bold text-zinc-900 dark:text-zinc-100">{{ $t['name'] }}</h4>
-                                <span class="text-[10px] text-zinc-400 font-medium">MQ Rating: <span class="text-indigo-500">{{ $t['mq'] }}</span></span>
+                                <h4 class="text-sm font-semibold text-slate-900">{{ $u->name }}</h4>
+                                <span class="text-[10px] text-slate-500 font-medium">Completed: <span class="text-blue-600">{{ $u->assessments->where('status', 'completed')->count() }}</span></span>
                             </div>
                         </div>
                         <div class="text-right">
-                            <span class="text-[10px] font-bold {{ str_contains($t['trend'], '+') ? 'text-emerald-500' : 'text-rose-500' }}">
-                                {{ $t['trend'] }}
+                            <span class="text-[10px] font-bold text-emerald-600">
+                                Active
                             </span>
                         </div>
                     </div>
@@ -132,61 +131,74 @@
         </div>
 
         <!-- User Management Table (Updated) -->
-        <div class="glass-card !p-0 overflow-hidden border border-indigo-500/10 dark:border-indigo-400/5 shadow-2xl">
-            <div class="p-6 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between bg-zinc-50/50 dark:bg-zinc-800/50">
-                <h3 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 italic">Personnel Management</h3>
+        <div class="glass-card !p-0 overflow-hidden shadow-sm">
+            <div class="p-6 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+                <h3 class="text-lg font-bold text-slate-900">Personnel Management</h3>
                 <div class="flex gap-2">
                     <div class="relative">
-                        <input type="text" placeholder="Search team..." class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-2 text-xs focus:ring-2 focus:ring-indigo-500 w-64 transition-all">
+                        <input type="text" placeholder="Search team..." class="bg-white border border-slate-200 rounded-lg px-4 py-2 text-xs focus:ring-2 focus:ring-blue-500 w-64 transition-all">
                     </div>
-                    <button class="mq-button-primary !py-2 !text-[10px] uppercase tracking-widest">Remind All</button>
                 </div>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left">
-                    <thead class="bg-zinc-50 dark:bg-zinc-900/50 text-zinc-500 text-[10px] font-bold uppercase tracking-widest border-b border-zinc-200 dark:border-zinc-800">
+                    <thead class="bg-white text-slate-500 text-[10px] font-bold uppercase tracking-widest border-b border-slate-200">
                         <tr>
                             <th class="px-6 py-4">User Details</th>
-                            <th class="px-6 py-4">Department</th>
-                            <th class="px-6 py-4">Current MQ</th>
-                            <th class="px-6 py-4">Assessment Status</th>
-                            <th class="px-6 py-4">Last Activity</th>
+                            <th class="px-6 py-4 text-center">Total Assessments</th>
+                            <th class="px-6 py-4">Current Status</th>
+                            <th class="px-6 py-4">Assessment Validation</th>
+                            <th class="px-6 py-4">Joined At</th>
                             <th class="px-6 py-4 text-right">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800">
-                        @foreach([
-                            ['name' => 'Alice Smith', 'role' => 'Project Manager', 'dept' => 'Sales', 'mq' => 92, 'status' => 'Certified', 'active' => '2 hrs ago'],
-                            ['name' => 'Bob Jones', 'role' => 'Lead Engineer', 'dept' => 'Engineering', 'mq' => 84, 'status' => 'Pending', 'active' => 'Yesterday'],
-                            ['name' => 'Charlie Brown', 'role' => 'HR Specialist', 'dept' => 'Human Resources', 'mq' => 76, 'status' => 'Certified', 'active' => '3 days ago'],
-                            ['name' => 'Sarah Jenkins', 'role' => 'Product Director', 'dept' => 'Product', 'mq' => 96, 'status' => 'Certified', 'active' => '5 mins ago'],
-                        ] as $u)
-                        <tr class="hover:bg-indigo-50/30 dark:hover:bg-indigo-900/10 transition-colors text-sm group">
+                    <tbody class="divide-y divide-slate-100">
+                        @foreach($users as $u)
+                        <tr class="hover:bg-slate-50 transition-colors text-sm group">
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center font-bold text-zinc-500 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                                        {{ substr($u['name'], 0, 1) }}
+                                    <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                        {{ substr($u->name, 0, 1) }}
                                     </div>
                                     <div>
-                                        <div class="font-bold text-zinc-900 dark:text-zinc-100">{{ $u['name'] }}</div>
-                                        <div class="text-[10px] text-zinc-400 font-medium">{{ $u['role'] }}</div>
+                                        <div class="font-semibold text-slate-900">{{ $u->name }}</div>
+                                        <div class="text-[10px] text-slate-400 font-medium">{{ $u->email }}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-zinc-500 text-xs">{{ $u['dept'] }}</td>
-                            <td class="px-6 py-4">
-                                <span class="font-black text-indigo-600 dark:text-indigo-400">{{ $u['mq'] }}</span>
+                            <td class="px-6 py-4 text-slate-500 text-xs text-center">
+                                <span class="font-bold text-slate-700">{{ $u->assessments->count() }}</span>
                             </td>
                             <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider {{ $u['status'] === 'Certified' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' }}">
-                                    {{ $u['status'] }}
-                                </span>
+                                <span class="font-bold text-blue-600">{{ $u->assessments->where('status', 'completed')->count() > 0 ? 'Active' : 'Unassessed' }}</span>
                             </td>
-                            <td class="px-6 py-4 text-zinc-400 text-[11px] font-medium italic">{{ $u['active'] }}</td>
+                            <td class="px-6 py-4">
+                                @if($u->assessments->where('status', 'completed')->count() > 0)
+                                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700 border border-emerald-200">
+                                        Certified
+                                    </span>
+                                @else
+                                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700 border border-amber-200">
+                                        Pending
+                                    </span>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4 text-slate-400 text-[11px] font-medium">{{ $u->created_at->diffForHumans() }}</td>
                             <td class="px-6 py-4 text-right">
-                                <button class="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-lg transition-all text-zinc-400 hover:text-indigo-600">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
-                                </button>
+                                <div class="flex items-center justify-end gap-2">
+                                    <button class="px-3 py-1.5 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-md text-[10px] font-bold uppercase tracking-widest border border-blue-200 transition-all flex items-center">
+                                        Assign
+                                    </button>
+                                    @if($u->assessments->where('status', 'completed')->count() > 0)
+                                        <button class="px-3 py-1.5 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md text-[10px] font-bold uppercase tracking-widest border border-slate-200 transition-all shadow-sm">
+                                            Report
+                                        </button>
+                                    @else
+                                        <button class="px-3 py-1.5 text-slate-400 rounded-md text-[10px] font-bold uppercase tracking-widest border border-transparent cursor-not-allowed opacity-50">
+                                            Report
+                                        </button>
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                         @endforeach
@@ -198,9 +210,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const isDark = document.documentElement.classList.contains('dark');
-            const textColor = isDark ? '#94a3b8' : '#64748b';
-            const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+            const textColor = '#475569';
+            const gridColor = '#f1f5f9';
+            const isDark = false;
 
             // Health Score Chart
             new Chart(document.getElementById('healthScoreChart'), {

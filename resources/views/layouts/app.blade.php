@@ -12,20 +12,14 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <style>body { font-family: 'Outfit', sans-serif; }</style>
     </head>
-    <body class="h-full bg-zinc-950 antialiased custom-scrollbar text-white overflow-hidden">
-        <!-- Background Elements -->
-        <div class="fixed inset-0 z-0 pointer-events-none">
-            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-600/5 rounded-full blur-[120px]"></div>
-            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[120px]"></div>
-        </div>
-
+    <body class="h-full bg-slate-50 antialiased custom-scrollbar text-slate-900 overflow-hidden">
         <div class="flex h-full overflow-hidden relative z-10">
             <!-- Sidebar -->
-            <aside class="hidden lg:flex flex-col w-72 bg-zinc-900/50 backdrop-blur-2xl border-r border-white/5">
-                <div class="flex items-center h-24 px-8 border-b border-white/5">
+            <aside class="hidden lg:flex flex-col w-72 bg-white border-r border-slate-200">
+                <div class="flex items-center h-24 px-8 border-b border-slate-200">
                     <a href="/" class="flex items-center gap-3 group">
-                        <div class="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center font-black italic text-xl shadow-[0_0_20px_rgba(79,70,229,0.3)]">MQ</div>
-                        <span class="text-xs font-black italic tracking-[0.4em] uppercase text-zinc-500 group-hover:text-white transition-colors">Neural Hub</span>
+                        <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-bold text-xl text-white shadow-sm">MQ</div>
+                        <span class="text-sm font-bold tracking-widest uppercase text-slate-700">Enterprise</span>
                     </a>
                 </div>
                 
@@ -66,33 +60,33 @@
             <!-- Main Content Area -->
             <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
                 <!-- Top Header -->
-                <header class="h-24 bg-zinc-900/10 backdrop-blur-3xl border-b border-white/5 flex items-center justify-between px-10 shrink-0">
+                <header class="h-24 bg-white border-b border-slate-200 flex items-center justify-between px-10 shrink-0 shadow-sm">
                     <div class="flex flex-1 max-w-xl">
                         <div class="relative w-full group">
-                            <input type="text" placeholder="Access Neural Threads..." class="w-full bg-white/5 border border-white/5 rounded-2xl py-3 pl-12 focus:ring-4 focus:ring-indigo-500/10 transition-all text-[10px] font-black uppercase tracking-widest placeholder-zinc-600">
-                            <svg class="w-4 h-4 absolute left-5 top-3.5 text-zinc-600 group-focus-within:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            <input type="text" placeholder="Search resources..." class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-12 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm placeholder-slate-400 text-slate-900">
+                            <svg class="w-5 h-5 absolute left-4 top-3.5 text-slate-400 group-focus-within:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         </div>
                     </div>
                     
                     <div class="flex items-center gap-8 ml-8">
-                        <button class="relative text-zinc-500 hover:text-white transition-all transform hover:scale-110">
+                        <button class="relative text-slate-400 hover:text-slate-600 transition-all">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-                            <span class="absolute top-0 right-0 w-2 h-2 bg-indigo-500 rounded-full border-2 border-zinc-950"></span>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-rose-500 rounded-full border-2 border-white"></span>
                         </button>
-                        <div class="flex items-center gap-5 pl-8 border-l border-white/5">
+                        <div class="flex items-center gap-4 pl-8 border-l border-slate-200">
                              <div class="text-right hidden sm:block">
-                                <p class="text-xs font-black text-zinc-100 italic tracking-tighter">{{ Auth::user()->name }}</p>
-                                <p class="text-[9px] font-black text-zinc-600 uppercase tracking-widest mt-0.5">Neural Admin</p>
+                                <p class="text-sm font-bold text-slate-800">{{ Auth::user()->name }}</p>
+                                <p class="text-xs font-medium text-slate-500">Administrator</p>
                              </div>
-                             <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-indigo-600 p-0.5 shadow-lg shadow-indigo-500/10 hover:scale-105 transition-transform cursor-pointer">
-                                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=fff&background=6366f1" class="w-full h-full rounded-2xl border-2 border-zinc-900" alt="Avatar">
+                             <div class="w-10 h-10 rounded-full bg-slate-200 cursor-pointer overflow-hidden border border-slate-300">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=1e40af&background=eff6ff" class="w-full h-full" alt="Avatar">
                              </div>
                         </div>
                     </div>
                 </header>
 
                 <!-- Page Content -->
-                <main class="flex-1 overflow-y-auto p-10 bg-transparent custom-scrollbar">
+                <main class="flex-1 overflow-y-auto p-10 bg-slate-50 custom-scrollbar">
                     {{ $slot }}
                 </main>
             </div>

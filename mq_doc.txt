@@ -1,0 +1,136 @@
+MANAGERIAL QUOTIENT (MQ) — FULL PRODUCT &
+DEVELOPMENT PROPOSAL
+Performance Intelligence System
+1. Executive Summary
+Managerial  Quotient  (MQ)  is  a  performance  intelligence  system  designed  to  evaluate  managerial  capability  using
+structured KPI-based assessments, performance tracking, and decision intelligence. The current system functions as a
+static assessment tool, but the proposed evolution will transform MQ into a continuous, intelligent, and decision-driven
+platform for organizations. This proposal includes: Existing system overview, Core features to be added, Secondary
+adoption features, AI intelligence layer , Market differentiation features, and Development structure (team, workflow,
+ownership, execution model).
+2. Current System Overview
+2.1 ASSESSMENT SYSTEM
+3-level evaluation system (Level 1, 2, 3)
+Time-based assessments (30, 45, 60 minutes)
+MCQ and rating-scale questions
+KPI-based evaluation structure
+2.2 KPI FRAMEWORK
+Attitude, Communication Skills, Decision Making, Creativity, Innovation, Discipline, Commitment, Leadership, Delegation.
+2.3 ORGANIZATION SYSTEM
+Multi-organization licensing model
+Admin dashboard for HR, Employee onboarding system, Assessment assignment system
+2.4 REPORTING SYSTEM
+KPI-based performance reports, Competency analysis reports, Training Needs Analysis (TNA), Batch comparison reports,
+PDF export system.
+2.5 EVALUATION LOGIC
+Static scoring based on assessment answers, Benchmark comparison model, Single-point-in-time evaluation output.
+3. Key Problem Statement
+The current system has the following limitations: It is static (no continuous tracking); It is report-focused rather than
+decision-focused; It lacks ranking and comparison intelligence; It has no predictive or AI layer; It is not embedded into
+daily organizational workflow.
+4. Proposed Product Evolution
+MQ will evolve into: A Performance Intelligence System that continuously measures, ranks, and improves managerial
+performance.• 
+• 
+• 
+• 
+• 
+• 
+Page 1
+5. Core Features (System Transformation)
+5.1 Dynamic KPI Weighting System
+Problem: All roles are evaluated using the same KPI importance.
+Solution: Allow organizations to assign weightage to KPIs per role.
+Implementation: Table: role_kpi_weights; Weighted scoring formula applied during evaluation.
+5.2 Continuous Evaluation System
+Problem: Current MQ is one-time evaluation based.
+Solution: Introduce monthly/weekly evaluation cycles.
+Implementation: evaluation_cycles table; Laravel scheduler (cron jobs); Auto-generated assessments per cycle.
+5.3 Employee Ranking System
+Problem: No structured comparison between employees.
+Solution: Rank employees within Teams, Departments, and Organizations.
+Implementation: Ordered scoring queries; Cached ranking tables for performance.
+5.4 Performance Timeline Tracking
+Problem: No historical visibility of performance.
+Solution: Track employee performance over time.
+Implementation: performance_history table; Chart-based visualization (Chart.js).
+5.5 Promotion Recommendation Engine
+Problem: HR decisions are subjective.
+Solution: System suggests promotion readiness.
+Implementation: Rule-based logic engine (score threshold, consistency checks, trend validation).
+5.6 Performance Alert System
+Problem: HR reacts too late to performance issues.
+Solution: Real-time alerts for performance changes.
+Implementation: Laravel Events + Notifications; Trigger rules for score drop / improvement.
+6. Secondary Features
+6.1 Employee Growth Dashboard:  Personal MQ score tracking, KPI breakdown, improvement history.
+6.2 Manager Dashboard:  Team performance overview, Employee comparison tools, weak/strong KPI visualization.
+6.3 Manager Notes System:  Qualitative feedback linked to employees.
+6.4 Notification System:  Assessment reminders, performance updates, monthly summaries.
+6.5 Export Center:  Central report downloads, historical report access.
+6.6 Department Health Report:  average department performance, KPI weaknesses per department.
+6.7 Audit Log System:  logs all score changes, tracks system actions.• 
+• 
+• 
+• 
+• 
+• 
+• 
+Page 2
+7. AI Features (Intelligence Layer)
+7.1 AI Performance Summary: Converts raw data into simple insights.
+7.2 AI Promotion Prediction: Predicts employee readiness for promotion.
+7.3 AI Skill Gap Detection: Identifies missing skills automatically.
+7.4 AI Risk Detection: Identifies employees likely to underperform.
+7.5 AI Question Generation (Optional): Generates role-based KPI questions automatically.
+8. Market Differentiation Features
+8.1 MQ Score Branding:  A standardized industry metric for every employee.
+8.2 Benchmark Reports:  Company performance compared internally or externally.
+8.3 Talent Leaderboard:  Internal ranking system for performance visibility.
+8.4 Executive Summary Report (1 Page):  top performers, risk employees, team health score.
+8.5 Promotion Readiness Score:  Ready, Not Ready, Potential.
+8.6 Shareable Reports:  Secure report links for sharing.
+8.7 Before vs After MQ Impact Report:  Measurable improvement after MQ usage.
+9. Development Structure (Critical Execution Model)
+9.1 Team Structure
+Absar — Chief Technical Officer (CTO):  Responsible for System architecture, technical design, coding standards,
+workflow management, code reviews, and final technical authority.
+Shayaan — Software Developer:  Responsible for core development, feature implementation, frontend/backend
+contribution, and execution under CTO guidance.
+9.2 Team Expansion Policy
+CTO may onboard additional developers; Contributors work under supervision.
+No equity unless separately agreed; Experience certificates may be issued.
+9.3 Code Ownership & Governance
+CTO must approve all merges; No production code without review.
+CTO defines architecture & standards; All IP belongs to MQ.
+9.4 Agile Sprint Structure
+Work organized in 2-week sprints with defined deliverables.
+CTO defines technical scope; Founder defines business priorities.
+9.5 Sprint Planning Process
+CTO defines technical execution plan, task breakdown, engineering priorities. Founder defines business priorities
+and feature direction. Final scope approved after alignment.
+9.6 Communication Structure
+Weekly mandatory sync meeting (progress, blockers, adjustments). Asynchronous via GitHub/task board.
+9.7 Working Hours Commitment
+Total: 40 hours/week minimum (Absar: 20 hours, Shayaan: 20 hours). Tracked via Clockify (mandatory) .• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+Page 3
+10. Business Impact
+Make MQ a daily-use system; Shift from reporting tool to decision engine; Increase retention and subscription value;
+Enable enterprise-level adoption; Create "Performance Intelligence SaaS" category.
+11. Final Positioning
+Current MQ:  A structured assessment and reporting system.
+Future MQ:  A continuous performance intelligence platform that measures, ranks, predicts, and improves managerial
+performance.
+Page 4
