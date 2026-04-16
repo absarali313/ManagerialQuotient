@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="space-y-10 pb-12">
+    <div x-data="{ showAddEmployeeModal: false }" class="space-y-10 pb-12">
         <!-- Header Section -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="space-y-1">
@@ -23,6 +23,19 @@
                 </button>
             </div>
         </div>
+
+        @if(session('status'))
+            <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 px-6 py-3 rounded-2xl flex items-center gap-3">
+                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm font-semibold">{{ session('status') }}</span>
+            </div>
+        @endif
+
+        @if($errors->any())
+            <div class="bg-red-50 border border-red-200 text-red-700 px-6 py-3 rounded-2xl">
+                <ul class="text-sm font-semibold list-disc list-inside">@foreach($errors->all() as $e)<li>{{ $e }}</li>@endforeach</ul>
+            </div>
+        @endif
 
         <!-- Top Metrics Grid -->
         <div class="grid lg:grid-cols-4 gap-6">
@@ -138,6 +151,10 @@
                     <div class="relative">
                         <input type="text" placeholder="Search team..." class="bg-white border border-slate-200 rounded-lg px-4 py-2 text-xs focus:ring-2 focus:ring-blue-500 w-64 transition-all">
                     </div>
+                    <button @click="showAddEmployeeModal = true" class="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-bold hover:bg-slate-800 transition-all shadow-sm flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        Add Employee
+                    </button>
                 </div>
             </div>
             <div class="overflow-x-auto">
@@ -360,5 +377,49 @@
             });
         });
     </script>
+
+    <!-- Add Employee Modal -->
+    <div x-show="showAddEmployeeModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center" style="display:none;">
+        <div x-show="showAddEmployeeModal" x-transition:enter="ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="showAddEmployeeModal = false" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm"></div>
+        <div x-show="showAddEmployeeModal" x-transition:enter="ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-150" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="relative bg-white rounded-3xl shadow-xl w-full max-w-md mx-4 border border-slate-200 z-50">
+            <form action="{{ route('add-employee') }}" method="POST">
+                @csrf
+                <div class="p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">Invite New Employee</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">Account tied to your company profile.</p>
+                        </div>
+                        <button type="button" @click="showAddEmployeeModal = false" class="ml-auto p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-widest mb-1.5">Full Name</label>
+                            <input type="text" name="name" required placeholder="e.g. Sarah Johnson" class="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block p-3 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-widest mb-1.5">Work Email</label>
+                            <input type="email" name="email" required placeholder="sarah@company.com" class="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block p-3 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-widest mb-1.5">Temporary Password</label>
+                            <input type="password" name="password" required minlength="8" placeholder="Min. 8 characters" class="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block p-3 transition-all">
+                            <p class="text-[10px] text-slate-400 mt-1.5 font-medium">Employee should change this on first login.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-8 pb-8 flex gap-3">
+                    <button type="submit" class="flex-1 py-3 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition-all shadow-sm">Add Employee</button>
+                    <button type="button" @click="showAddEmployeeModal = false" class="flex-1 py-3 bg-slate-100 text-slate-700 rounded-xl text-sm font-bold hover:bg-slate-200 transition-all">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </x-app-layout>
 

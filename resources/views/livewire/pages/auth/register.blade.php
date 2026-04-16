@@ -27,8 +27,16 @@ new #[Layout('layouts.guest')] class extends Component
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
+        $validated['role'] = 'admin';
 
         event(new Registered($user = User::create($validated)));
+
+        // Auto-create the user's company
+        $company = \App\Models\Company::create([
+            'name' => $user->name . "'s Organization",
+            'admin_id' => $user->id,
+        ]);
+        $user->update(['company_id' => $company->id]);
 
         Auth::login($user);
 
