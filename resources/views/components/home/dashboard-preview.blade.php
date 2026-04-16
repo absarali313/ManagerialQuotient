@@ -1,11 +1,11 @@
 <section class="py-24 bg-white relative overflow-hidden">
     <!-- Decor -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white -z-10"></div>
-    
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Everything You Need in One Intelligent Dashboard</h2>
         <p class="text-lg text-gray-500 mb-16 max-w-2xl mx-auto">A unified interface crafted for managers. See team overview, individual metrics, and actionable AI insights at a glance.</p>
-        
+
         <div class="relative max-w-5xl mx-auto">
             <!-- Mockup Container -->
             <div class="bg-gray-900 rounded-[2rem] p-2 shadow-2xl relative z-10 border border-gray-800">
@@ -23,7 +23,7 @@
                         </div>
                         <div class="w-16"></div>
                     </div>
-                    
+
                     <!-- App View -->
                     <div class="p-8 bg-gray-50 grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Top metrics -->
@@ -34,22 +34,22 @@
                                 <p class="text-xs text-green-500 mt-2 font-medium">&uarr; 12% this month</p>
                             </div>
                             <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                                <p class="text-sm font-medium text-gray-500 mb-1">Avg Engagement</p>
+                                <p class="text-sm font-medium text-gray-500 mb-1">Avg MQ Score</p>
                                 <p class="text-3xl font-black text-gray-900">82.4</p>
                                 <p class="text-xs text-green-500 mt-2 font-medium">&uarr; 3.2% this month</p>
                             </div>
                             <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                                <p class="text-sm font-medium text-gray-500 mb-1">Retention Risk</p>
-                                <p class="text-3xl font-black text-gray-900">14.3</p>
-                                <p class="text-xs text-red-500 mt-2 font-medium">&darr; -2.1% this month</p>
+                                <p class="text-sm font-medium text-gray-500 mb-1">Top Performer</p>
+                                <p class="text-3xl font-black text-gray-900">92.4</p>
+                                <p class="text-xs text-red-500 mt-2 font-medium">&darr; +2.1% this month</p>
                             </div>
                             <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                                <p class="text-sm font-medium text-gray-500 mb-1">Open Reviews</p>
+                                <p class="text-sm font-medium text-gray-500 mb-1">At Risk</p>
                                 <p class="text-3xl font-black text-gray-900">28</p>
-                                <p class="text-xs text-gray-400 mt-2 font-medium">Needs attention</p>
+                                <p class="text-xs text-red-500 mt-2 font-medium">Needs attention</p>
                             </div>
                         </div>
-                        
+
                         <!-- Left Big Chart -->
                         <div class="col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col min-h-[300px]">
                             <h4 class="font-bold text-gray-900 mb-6">Performance Trend</h4>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Blur glow behind -->
             <div class="absolute inset-0 bg-blue-500/20 blur-[100px] z-0 rounded-full"></div>
         </div>

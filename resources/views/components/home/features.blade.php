@@ -1,4 +1,4 @@
-<section class="py-24 bg-gray-50/50" id="features">
+<section class="py-24 bg-white" id="features">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-20">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Powerful Features for Modern Teams</h2>
@@ -6,7 +6,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            <x-ui.feature-card title="Performance Analytics" description="Track continuous multi-source feedback in real-time. Gain actionable insights with intelligent dashboards." iconColor="blue">
+            <x-ui.feature-card title="Continuous Evaluation" description="Track employee performance in real-time with automated assessments and continuous feedback loops." iconColor="blue">
                 <x-slot:icon>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                 </x-slot:icon>
@@ -18,7 +18,7 @@
                 </x-slot:icon>
             </x-ui.feature-card>
 
-            <x-ui.feature-card title="Performance Reviews" description="Automated forms streamline the review process making it less frustrating for both managers and employees." iconColor="green">
+            <x-ui.feature-card title="Performance Timeline" description="Visualize performance trends over time with detailed historical data and growth patterns." iconColor="green">
                 <x-slot:icon>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </x-slot:icon>
