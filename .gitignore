@@ -13,7 +13,7 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
+# /public/build  ← Committed intentionally so it works without npm
 /public/hot
 /public/storage
 /storage/*.key
