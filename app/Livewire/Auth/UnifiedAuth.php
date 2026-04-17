@@ -4,44 +4,52 @@ namespace App\Livewire\Auth;
 
 use App\Models\Organization;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class UnifiedAuth extends Component
 {
     public string $mode = 'login'; // 'login', 'register', 'forgot'
 
-    // Form inputs
-    public string $org_name = '';
-    public string $name = '';
-    public string $email = '';
-    public string $password = '';
-    public bool $remember = false;
+    public string $orgName = '';
 
-    public function mount($initialMode = 'login')
+    public string $name = '';
+
+    public string $email = '';
+
+    public string $password = '';
+
+    public bool $isRemembered = false;
+
+    public function mount(string $initialMode = 'login'): void
     {
         $this->mode = $initialMode;
     }
 
-    public function switchMode($newMode)
+    public function switchMode(string $newMode): void
     {
         $this->mode = $newMode;
         $this->resetErrorBag();
-        $this->password = ''; // Clear password for security when switching
+        $this->password = '';
     }
 
-    public function login()
+    public function login(): Redirector|RedirectResponse
     {
         $this->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
         ]);
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password, 'is_active' => true], $this->remember)) {
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password, 'is_active' => true], $this->isRemembered)) {
             session()->regenerate();
+
             return redirect()->intended('/dashboard');
         }
 
@@ -50,30 +58,28 @@ class UnifiedAuth extends Component
         ]);
     }
 
-    public function register()
+    public function register(): Redirector|RedirectResponse
     {
         $this->validate([
-            'org_name' => ['required', 'string', 'max:255'],
+            'orgName' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8'],
         ]);
 
-        // Create the organization
         $organization = Organization::create([
-            'name' => $this->org_name,
-            'slug' => \Illuminate\Support\Str::slug($this->org_name) . '-' . uniqid(),
+            'name' => $this->orgName,
+            'slug' => Str::slug($this->orgName) . '-' . uniqid(),
             'license_type' => 'trial',
             'is_active' => true,
         ]);
 
-        // Create the user as a platform admin
         $user = User::create([
             'organization_id' => $organization->id,
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            'system_role' => 'admin',
+            'system_role' => 'org_admin',
             'is_active' => true,
         ]);
 
@@ -82,7 +88,7 @@ class UnifiedAuth extends Component
         return redirect('/dashboard');
     }
 
-    public function sendPasswordReset()
+    public function sendPasswordReset(): void
     {
         $this->validate([
             'email' => ['required', 'email'],
@@ -94,7 +100,7 @@ class UnifiedAuth extends Component
 
         if ($status === Password::RESET_LINK_SENT) {
             session()->flash('status', __($status));
-            $this->switchMode('login'); // Return back to login with success banner
+            $this->switchMode('login');
         } else {
             throw ValidationException::withMessages([
                 'email' => [__($status)],
@@ -102,7 +108,7 @@ class UnifiedAuth extends Component
         }
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.auth.unified-auth');
     }

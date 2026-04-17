@@ -12,18 +12,18 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [\App\Http\Controllers\Auth\LoginController::class, 'create'])->name('register');
 
     // Google Socialite endpoints
-    Route::get('auth/google', [\App\Http\Controllers\Auth\GoogleLoginController::class, 'redirect'])->name('auth.google');
-    Route::get('auth/google/callback', [\App\Http\Controllers\Auth\GoogleLoginController::class, 'callback'])->name('auth.google.callback');
+    Route::get('auth/google', [\App\Http\Controllers\Auth\GoogleLoginController::class, 'redirect'])->name('auth_google');
+    Route::get('auth/google/callback', [\App\Http\Controllers\Auth\GoogleLoginController::class, 'callback'])->name('auth_google_callback');
 });
 
 Route::middleware('auth')->group(function () {
     Volt::route('verify-email', 'pages.auth.verify-email')
-        ->name('verification.notice');
+        ->name('verification_notice');
 
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
         ->middleware(['signed', 'throttle:6,1'])
-        ->name('verification.verify');
+        ->name('verification_verify');
 
     Volt::route('confirm-password', 'pages.auth.confirm-password')
-        ->name('password.confirm');
+        ->name('password_confirm');
 });
