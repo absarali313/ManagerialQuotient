@@ -12,13 +12,32 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            Schema::create('users', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('organization_id')->nullable()->constrained()->nullOnDelete();
+                $table->foreignId('department_id')->nullable()->constrained()->nullOnDelete();
+                $table->foreignId('team_id')->nullable()->constrained()->nullOnDelete();
+                $table->foreignId('job_role_id')->nullable()->constrained()->nullOnDelete();
+                $table->foreignId('reports_to_user_id')->nullable()->constrained('users')->nullOnDelete();
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->timestamp('email_verified_at')->nullable();
+                $table->string('password');
+                $table->string('phone')->nullable();
+                $table->string('employee_id')->nullable();
+                $table->date('joined_at')->nullable();
+                $table->enum('system_role', ['super_admin', 'org_admin', 'hr', 'manager', 'employee'])->default('employee');
+                $table->decimal('current_mq_score', 5, 2)->nullable();
+                $table->string('promotion_readiness')->nullable();
+                $table->boolean('is_active')->default(true);
+                $table->rememberToken();
+                $table->timestamps();
+                $table->softDeletes();
+
+                // Indexes
+                $table->index(['organization_id', 'system_role']);
+                $table->index(['organization_id', 'department_id']);
+            });
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
