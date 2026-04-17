@@ -9,13 +9,8 @@
 
             <div class="absolute -bottom-8 left-20 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" style="animation-delay: 4s;"></div>
 
-            <div class="relative z-10 max-w-lg mt-12">
-                <div class="w-12 h-12 bg-white/10 rounded-lg backdrop-blur-sm flex items-center justify-center mb-8 border border-white/20">
-                    <x-lucide-lightbulb class="w-6 h-6 text-white" />
-                </div>
-
+            <div class="relative z-10 max-w-lg mt-6">
                 <h1 class="text-5xl font-bold leading-tight tracking-tight mb-4 text-white">Managerial<br>Quotient</h1>
-
                 <p class="text-xl text-blue-100 font-light max-w-xs">AI-Powered Performance Intelligence System</p>
 
                 <div class="mt-20 space-y-8">
@@ -72,12 +67,6 @@
 
         <!-- Right Login Form Side -->
         <div class="w-full lg:w-1/2 flex items-center justify-center relative bg-white lg:bg-gray-50/50">
-            <!-- Top right Enterprise Security Badge -->
-            <div class="absolute top-8 right-8 hidden lg:flex items-center text-gray-500 space-x-2 text-sm font-medium">
-                <x-lucide-shield-check class="w-4 h-4 text-emerald-600" />
-                <span>Enterprise Security</span>
-            </div>
-
             <div class="w-full max-w-md px-8 lg:px-0">
                 <livewire:auth.unified-auth :initial-mode="$mode" />
 
