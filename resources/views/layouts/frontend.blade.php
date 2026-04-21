@@ -26,7 +26,7 @@
         <x-frontend.header />
 
         <!-- Page Content -->
-        <main class="relative min-h-[calc(100vh-200px)]">
+        <main class="relative">
             {{ $slot }}
         </main>
 
