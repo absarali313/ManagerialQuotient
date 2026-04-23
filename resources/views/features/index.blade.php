@@ -1,6 +1,5 @@
 <x-frontend-layout>
     <div class="space-y-20 pb-32">
-        
         <!-- Hero Section -->
         <section class="relative pt-12 overflow-hidden">
             <div class="max-w-5xl mx-auto px-10">
@@ -27,7 +26,7 @@
                     
                     <div class="lg:w-1/2 mt-10 lg:mt-0 relative">
                         <div class="relative z-10 bg-white/40 p-1 rounded-3xl shadow-lg backdrop-blur-sm border border-white/40 max-w-md mx-auto lg:ml-auto">
-                            <img src="{{ asset('dashboard_mockup.jpg') }}" alt="MQ Dashboard" class="rounded-2xl shadow-inner w-full">
+                            <img src="{{ asset('assets/images/dashboard_mockup.jpg') }}" alt="MQ Dashboard" class="rounded-2xl shadow-inner w-full">
                             
                             <!-- Floating Stat (Scaled even smaller) -->
                             <div class="absolute -top-4 -left-4 bg-white p-2.5 rounded-lg shadow-md border border-gray-100 animate-bounce" style="animation-duration: 3s">
@@ -53,15 +52,15 @@
                 <!-- Problems -->
                 <div class="space-y-5">
                     <h2 class="text-lg font-black font-outfit text-gray-900 border-l-4 border-red-500 pl-3 uppercase tracking-wider">Traditional HR Gaps</h2>
-                    <div class="space-y-2">
+                    <div class="space-y-3">
                         @foreach(['Static Metrics' => 'Limited insights.',
                                   'Subjective Methods' => 'Bias and inconsistency.',
                                   'No Real-time Data' => 'Missing growth metrics.'] as $title => $desc)
-                            <div class="bg-red-50/20 p-3 rounded-lg border border-red-100/40 flex gap-3 items-center">
-                                <x-lucide-x-circle class="w-4 h-4 text-red-400 shrink-0" />
+                            <div class="ml-2 bg-red-50/50 p-3.5 rounded-xl border border-red-100 flex gap-3 items-center shadow-sm shadow-red-500/5">
+                                <x-lucide-x-circle class="w-4 h-4 text-red-500 shrink-0" />
                                 <div class="flex items-center gap-2">
-                                    <h4 class="text-gray-900 font-bold text-xs">{{ $title }}:</h4>
-                                    <p class="text-[11px] text-gray-500">{{ $desc }}</p>
+                                    <h4 class="text-gray-900 font-bold text-[13px]">{{ $title }}:</h4>
+                                    <p class="text-xs text-gray-500">{{ $desc }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -71,15 +70,15 @@
                 <!-- Solutions -->
                 <div class="space-y-5">
                     <h2 class="text-lg font-black font-outfit text-gray-900 border-l-4 border-green-500 pl-3 uppercase tracking-wider">MQ Solutions</h2>
-                    <div class="space-y-2">
+                    <div class="space-y-3">
                         @foreach(['Continuous Evaluation' => 'Real-time cycles.',
                                   'AI-Powered Decisions' => 'Objective logic.',
                                   'Live Ranking' => 'Live leaderboards.'] as $title => $desc)
-                            <div class="bg-green-50/20 p-3 rounded-lg border border-green-100/40 flex gap-3 items-center">
+                            <div class="ml-2 bg-green-50/50 p-3.5 rounded-xl border border-green-100 flex gap-3 items-center shadow-sm shadow-green-500/5">
                                 <x-lucide-check-circle-2 class="w-4 h-4 text-green-500 shrink-0" />
                                 <div class="flex items-center gap-2">
-                                    <h4 class="text-gray-900 font-bold text-xs">{{ $title }}:</h4>
-                                    <p class="text-[11px] text-gray-500">{{ $desc }}</p>
+                                    <h4 class="text-gray-900 font-bold text-[13px]">{{ $title }}:</h4>
+                                    <p class="text-xs text-gray-500">{{ $desc }}</p>
                                 </div>
                             </div>
                         @endforeach

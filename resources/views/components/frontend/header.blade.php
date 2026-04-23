@@ -4,13 +4,17 @@
             <!-- Logo -->
             <div class="flex-shrink-0 flex items-center group cursor-pointer">
                 <a href="/" class="flex items-center">
-                    <img src="{{ asset('logo.jpg') }}" alt="Managerial Quotient" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('assets/images/logo.jpg') }}" alt="Managerial Quotient" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
                 </a>
             </div>
 
             <!-- Navigation Links -->
             <nav class="hidden md:flex items-center space-x-1">
-                <a href="{{ route('marketing.features') }}" class="px-4 py-2 {{ request()->routeIs('marketing.features') ? 'text-blue-600 bg-blue-50' : 'text-gray-500 hover:text-gray-900' }} text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl">Features</a>
+                <a href="{{ route('features_page') }}" @class([
+                    'px-4 py-2 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl',
+                    'text-blue-600 bg-blue-50' => request()->routeIs('features_page'),
+                    'text-gray-500 hover:text-gray-900' => !request()->routeIs('features_page')
+                ])>Features</a>
                 <a href="#how-it-works" class="px-4 py-2 text-gray-500 hover:text-gray-900 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl">How it Works</a>
                 <a href="#benefits" class="px-4 py-2 text-gray-500 hover:text-gray-900 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl">Benefits</a>
                 <a href="#pricing" class="px-4 py-2 text-gray-500 hover:text-gray-900 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl">Pricing</a>

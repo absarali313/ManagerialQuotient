@@ -3,7 +3,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div class="col-span-1 md:col-span-2">
                 <div class="flex items-center mb-6">
-                    <img src="{{ asset('logo.jpg') }}" alt="Managerial Quotient" class="h-10 w-auto">
+                    <img src="{{ asset('assets/images/logo.jpg') }}" alt="Managerial Quotient" class="h-10 w-auto">
                 </div>
                 <p class="text-gray-500 text-sm leading-relaxed max-w-sm">
                     Empowering managers with data-driven insights to build high-performing teams. Measure, analyze, and improve your managerial impact.

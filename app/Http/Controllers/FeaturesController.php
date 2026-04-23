@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Marketing;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
@@ -12,6 +12,6 @@ class FeaturesController extends Controller
      */
     public function index(): View
     {
-        return view('marketing.features');
+        return view('features.index');
     }
 }
