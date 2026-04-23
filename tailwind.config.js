@@ -14,8 +14,20 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                brand: {
+                    DEFAULT: '#111827',
+                    lime: '#D1FF1A',
+                    purple: '#6366F1',
+                }
+            },
+            borderRadius: {
+                '3xl': '24px',
+                '4xl': '32px',
+            },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                display: ['Outfit', ...defaultTheme.fontFamily.sans],
             },
             animation: {
                 blob: "blob 7s infinite",

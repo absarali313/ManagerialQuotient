@@ -12,7 +12,7 @@ class Organization extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 'slug', 'industry', 'logo_path', 'website', 'description',
+        'owner_user_id', 'name', 'slug', 'industry', 'logo_path', 'website', 'description',
         'license_type', 'max_users', 'license_starts_at', 'license_expires_at', 'is_active',
     ];
 
@@ -28,9 +28,17 @@ class Organization extends Model
 
     // ── Relationships ────────────────────────────────────────────────────────
 
-    public function users(): HasMany
+    public function owner(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class, 'owner_user_id');
+    }
+
+    /**
+     * All employee accounts belonging to this organization.
+     */
+    public function employees(): HasMany
+    {
+        return $this->hasMany(User::class, 'organization_id')->where('user_type', 'employee');
     }
 
     public function departments(): HasMany

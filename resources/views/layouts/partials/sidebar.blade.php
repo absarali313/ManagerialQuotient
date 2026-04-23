@@ -1,0 +1,121 @@
+<aside class="fixed inset-y-0 left-0 w-60 bg-white border-r border-gray-100 flex flex-col z-50">
+    <div class="px-6 py-5 flex items-center gap-2.5">
+        <div class="w-8 h-8 bg-[#5D45FD] rounded-lg flex items-center justify-center">
+             <span class="text-white font-bold text-[11px] uppercase">MQ</span>
+        </div>
+        <span class="text-lg font-bold text-gray-900 tracking-tight font-display">Intel</span>
+    </div>
+
+    <nav class="flex-1 px-3 overflow-y-auto">
+        {{-- MAIN Group --}}
+        @if(auth()->user()->isEmployee())
+            <p class="px-3 pt-4 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Main</p>
+            <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('dashboard') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-layout-dashboard class="w-4 h-4" />
+                <span>Dashboard</span>
+            </a>
+            <a href="{{ route('employees') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('employees') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-users class="w-4 h-4" />
+                <span>Employees</span>
+            </a>
+            <a href="{{ route('departments') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('departments') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-building class="w-4 h-4" />
+                <span>Departments</span>
+            </a>
+
+            {{-- INTELLIGENCE Group --}}
+            <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Intelligence</p>
+            <a href="{{ route('assessments') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('assessments') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-clipboard-list class="w-4 h-4" />
+                <span>Assessments</span>
+            </a>
+            <a href="{{ route('rankings') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('rankings') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-trophy class="w-4 h-4" />
+                <span>Rankings</span>
+            </a>
+            <a href="{{ route('ai-insights') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('ai-insights') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-sparkles class="w-4 h-4" />
+                <span>AI Insights</span>
+            </a>
+
+            {{-- SYSTEM Group --}}
+            <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">System</p>
+            <a href="{{ route('reports') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('reports') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-file-bar-chart class="w-4 h-4" />
+                <span>Reports</span>
+            </a>
+            <a href="{{ route('notifications') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('notifications') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-bell class="w-4 h-4" />
+                <span>Notifications</span>
+                <span class="ml-auto bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+            </a>
+            <a href="{{ route('settings') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('settings') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-settings class="w-4 h-4" />
+                <span>Settings</span>
+            </a>
+        @endif
+
+        @if(auth()->user()->isOrgAdmin())
+            <p class="px-3 pt-4 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Main</p>
+            <a href="{{ route('org-dashboard') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-dashboard') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-layout-dashboard class="w-4 h-4" />
+                <span>Dashboard</span>
+            </a>
+            <a href="{{ route('org-employees') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-employees') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-users class="w-4 h-4" />
+                <span>Employees</span>
+            </a>
+            <a href="{{ route('org-departments') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-departments') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-building class="w-4 h-4" />
+                <span>Departments</span>
+            </a>
+
+            {{-- INTELLIGENCE Group --}}
+            <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Intelligence</p>
+            <a href="{{ route('org-assessments') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-assessments') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-clipboard-list class="w-4 h-4" />
+                <span>Assessments</span>
+            </a>
+            <a href="{{ route('org-rankings') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-rankings') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-trophy class="w-4 h-4" />
+                <span>Rankings</span>
+            </a>
+            <a href="{{ route('org-ai-insights') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-ai-insights') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-sparkles class="w-4 h-4" />
+                <span>AI Insights</span>
+            </a>
+
+            {{-- SYSTEM Group --}}
+            <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">System</p>
+            <a href="{{ route('org-reports') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-reports') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-file-bar-chart class="w-4 h-4" />
+                <span>Reports</span>
+            </a>
+            <a href="{{ route('org-notifications') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-notifications') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-bell class="w-4 h-4" />
+                <span>Notifications</span>
+                <span class="ml-auto bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+            </a>
+            <a href="{{ route('org-settings') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-settings') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+                <x-lucide-settings class="w-4 h-4" />
+                <span>Settings</span>
+            </a>
+        @endif
+    </nav>
+
+    <div class="p-3 border-t border-gray-50">
+        <div class="flex items-center gap-3 p-2 bg-gray-50/50 border border-gray-100 rounded-2xl hover:bg-gray-100 transition-colors cursor-pointer group">
+            <div class="relative">
+                <img src="{{ auth()->user()->display_avatar }}" alt="{{ auth()->user()->display_name }}" class="w-9 h-9 rounded-full border border-white shadow-sm object-cover">
+                @if(auth()->user()->isEmployee())
+                    <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></div>
+                @endif
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="text-[13px] font-bold text-gray-900 truncate tracking-tight">{{ auth()->user()->display_name }}</p>
+                <p class="text-[10px] text-gray-400 font-medium truncate">{{ auth()->user()->display_subtitle }}</p>
+            </div>
+            <x-lucide-chevron-up class="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-500" />
+        </div>
+    </div>
+</aside>
