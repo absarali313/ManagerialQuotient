@@ -159,14 +159,33 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-5">
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
-                        <x-lucide-search class="w-4 h-4 text-pink-500" />
-                        <h3 class="text-[13px] font-black text-gray-900">Skill Gap Detection</h3>
+                <div class="grid md:grid-cols-2 gap-5">
+                    <!-- Skill Gap Detection -->
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 bg-pink-50 rounded-lg flex items-center justify-center">
+                                <x-lucide-search class="w-4 h-4 text-pink-500" />
+                            </div>
+                            <span class="px-2 py-0.5 bg-pink-50 text-pink-700 rounded-md text-[9px] font-bold uppercase tracking-wider">Gap Analysis</span>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-base font-black text-gray-900">Skill Gap Detection</h3>
+                            <p class="text-xs text-gray-500 italic">"Identifies 3 critical missing competencies in the current Senior Lead pipeline."</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
-                        <x-lucide-activity class="w-4 h-4 text-orange-500" />
-                        <h3 class="text-[13px] font-black text-gray-900">Attitude Detection</h3>
+
+                    <!-- Attitude Detection -->
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center">
+                                <x-lucide-activity class="w-4 h-4 text-orange-500" />
+                            </div>
+                            <span class="px-2 py-0.5 bg-orange-50 text-orange-700 rounded-md text-[9px] font-bold uppercase tracking-wider">Sentiment AI</span>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-base font-black text-gray-900">Attitude Detection</h3>
+                            <p class="text-xs text-gray-500 italic">"Detected a 12% positive shift in team sentiment after the Q1 evaluation cycle."</p>
+                        </div>
                     </div>
                 </div>
             </div>
