@@ -1,5 +1,6 @@
 <x-frontend-layout>
-    <div class="space-y-20 pb-32">
+    <div class="space-y-28 pb-32">
+        
         <!-- Hero Section -->
         <section class="relative pt-12 overflow-hidden">
             <div class="max-w-5xl mx-auto px-10">
@@ -119,10 +120,10 @@
         </section>
 
         <!-- AI Intelligence Layer -->
-        <section class="bg-gray-50/30 py-16 border-y border-gray-100/40">
-            <div class="max-w-4xl mx-auto px-10 space-y-10">
+        <section class="bg-gray-50/40 py-24 border-y border-gray-100/40">
+            <div class="max-w-4xl mx-auto px-10 space-y-12">
                 <div class="text-center space-y-1">
-                    <h2 class="text-2xl font-black font-outfit text-gray-900">AI Intelligence Layer</h2>
+                    <h2 class="text-2xl font-black font-outfit text-gray-900 uppercase tracking-wider">AI Intelligence Layer</h2>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-5">
@@ -172,27 +173,29 @@
         </section>
 
         <!-- What Makes MQ Different -->
-        <section class="max-w-5xl mx-auto px-10 space-y-10 bg-yellow-50/20 py-14 rounded-[2.5rem]">
-            <h2 class="text-2xl font-black font-outfit text-gray-900 text-center">What Makes Us Different</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
-                @foreach(['Standardization', 'Leaderboards', 'Exec Reports', 'Readiness', 'Benchmarks', 'Secure'] as $item)
-                    <div class="bg-white p-5 rounded-xl border border-yellow-100 text-center space-y-2">
-                        <div class="w-8 h-8 bg-yellow-50 rounded-lg flex items-center justify-center mx-auto">
-                            <x-lucide-star class="w-4 h-4 text-yellow-500" />
+        <section class="max-w-5xl mx-auto px-10 bg-yellow-50/20 py-24 rounded-[2.5rem]">
+            <div class="space-y-12">
+                <h2 class="text-2xl font-black font-outfit text-gray-900 text-center">What Makes Us Different</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+                    @foreach(['Standardization', 'Leaderboards', 'Exec Reports', 'Readiness', 'Benchmarks', 'Secure'] as $item)
+                        <div class="bg-white p-5 rounded-xl border border-yellow-100 text-center space-y-2">
+                            <div class="w-8 h-8 bg-yellow-50 rounded-lg flex items-center justify-center mx-auto">
+                                <x-lucide-star class="w-4 h-4 text-yellow-500" />
+                            </div>
+                            <h4 class="text-xs font-black text-gray-900 leading-tight">{{ $item }}</h4>
                         </div>
-                        <h4 class="text-xs font-black text-gray-900 leading-tight">{{ $item }}</h4>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </section>
 
         <!-- Final CTA -->
         <section class="max-w-4xl mx-auto px-6">
-            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2rem] p-8 sm:p-12 text-center space-y-6 shadow-lg relative overflow-hidden">
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2rem] p-12 text-center space-y-6 shadow-lg relative overflow-hidden">
                 <h2 class="text-2xl sm:text-3xl font-black font-outfit text-white tracking-tight">
                     Scale Your Performance Intelligence
                 </h2>
-                <div class="flex flex-wrap justify-center gap-3">
+                <div class="flex flex-wrap justify-center gap-3 text-center">
                     <a href="#" class="px-7 py-3 bg-white text-blue-600 rounded-lg font-bold text-sm shadow-md hover:-translate-y-0.5 transition-all">Get Started</a>
                     <a href="#" class="px-7 py-3 bg-transparent text-white border-2 border-white/20 rounded-lg font-bold text-sm hover:bg-white/5 transition-all">Request Demo</a>
                 </div>
