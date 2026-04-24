@@ -103,19 +103,42 @@
         @endif
     </nav>
 
-    <div class="p-3 border-t border-gray-50">
-        <div class="flex items-center gap-3 p-2 bg-gray-50/50 border border-gray-100 rounded-2xl hover:bg-gray-100 transition-colors cursor-pointer group">
-            <div class="relative">
-                <img src="{{ auth()->user()->display_avatar }}" alt="{{ auth()->user()->display_name }}" class="w-9 h-9 rounded-full border border-white shadow-sm object-cover">
-                @if(auth()->user()->isEmployee())
-                    <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></div>
-                @endif
+    <div class="p-3 border-t border-gray-50" x-data="{ open: false }">
+        <div class="relative">
+            <!-- Dropdown Menu -->
+            <div x-show="open" @click.away="open = false" 
+                 x-transition:enter="transition ease-out duration-100"
+                 x-transition:enter-start="transform opacity-0 scale-95"
+                 x-transition:enter-end="transform opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-75"
+                 x-transition:leave-start="transform opacity-100 scale-100"
+                 x-transition:leave-end="transform opacity-0 scale-95"
+                 class="absolute bottom-full left-0 w-full mb-2 bg-white border border-gray-100 rounded-xl shadow-lg shadow-black/5 overflow-hidden z-50 py-1"
+                 style="display: none;">
+                 
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-red-600 transition-colors">
+                        <x-lucide-log-out class="w-4 h-4" />
+                        Log Out
+                    </button>
+                </form>
             </div>
-            <div class="flex-1 min-w-0">
-                <p class="text-[13px] font-bold text-gray-900 truncate tracking-tight">{{ auth()->user()->display_name }}</p>
-                <p class="text-[10px] text-gray-400 font-medium truncate">{{ auth()->user()->display_subtitle }}</p>
+
+            <!-- Profile Button -->
+            <div @click="open = !open" class="flex items-center gap-3 p-2 bg-gray-50/50 border border-gray-100 rounded-2xl hover:bg-gray-100 transition-colors cursor-pointer group">
+                <div class="relative">
+                    <img src="{{ auth()->user()->display_avatar }}" alt="{{ auth()->user()->display_name }}" class="w-9 h-9 rounded-full border border-white shadow-sm object-cover">
+                    @if(auth()->user()->isEmployee())
+                        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></div>
+                    @endif
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-[13px] font-bold text-gray-900 truncate tracking-tight">{{ auth()->user()->display_name }}</p>
+                    <p class="text-[10px] text-gray-400 font-medium truncate">{{ auth()->user()->display_subtitle }}</p>
+                </div>
+                <x-lucide-chevron-up class="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-500 transition-transform duration-200" x-bind:class="{ 'rotate-180': open }" />
             </div>
-            <x-lucide-chevron-up class="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-500" />
         </div>
     </div>
 </aside>

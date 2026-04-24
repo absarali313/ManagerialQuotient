@@ -1,4 +1,4 @@
-<x-ui.card x-data="{ fullscreen: false }" :class="fullscreen ? 'fixed inset-0 z-[100] m-4 bg-white shadow-2xl rounded-3xl' : 'flex-1 border-none shadow-sm h-full overflow-hidden'">
+<x-ui.card :class="'flex-1 border-none shadow-sm h-full overflow-hidden'">
     <div class="flex justify-between items-center mb-6">
         <div>
             <h2 class="text-xl font-extrabold text-gray-900 tracking-tight">Department Health</h2>
