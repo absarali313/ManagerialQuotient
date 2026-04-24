@@ -17,4 +17,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+// Moduler Routes
+require __DIR__.'/employee.php';
+require __DIR__.'/organization.php';
+
 require __DIR__.'/auth.php';

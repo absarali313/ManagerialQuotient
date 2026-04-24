@@ -21,7 +21,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable, SoftDeletes;
 
     protected $fillable = [
-        'organization_id', 'department_id', 'team_id', 'job_role_id', 'reports_to_user_id',
+        'user_type', 'organization_id', 'department_id', 'team_id', 'job_role_id', 'reports_to_user_id',
         'name', 'email', 'password', 'phone', 'employee_id', 'avatar_path', 'joined_at',
         'system_role', 'current_mq_score', 'promotion_readiness', 'is_active',
     ];
@@ -43,9 +43,18 @@ class User extends Authenticatable
 
     // ── Relationships ────────────────────────────────────────────────────────
 
+    /**
+     * For employees: the organization they belong to.
+     * For organization users: the organization they own.
+     */
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    public function ownedOrganization(): HasOne
+    {
+        return $this->hasOne(Organization::class, 'owner_user_id');
     }
 
     public function department(): BelongsTo
@@ -86,5 +95,65 @@ class User extends Authenticatable
     public function performanceHistory(): HasMany
     {
         return $this->hasMany(PerformanceHistory::class)->orderBy('recorded_on', 'asc');
+    }
+
+    // ── Identity Resolution ──────────────────────────────────────────────────
+
+    /**
+     * Returns the name to display in the UI.
+     * If organization type, it returns the company name.
+     */
+    public function getDisplayNameAttribute(): string
+    {
+        if ($this->isOrganization() && $this->ownedOrganization) {
+            return $this->ownedOrganization->name;
+        }
+
+        return $this->name;
+    }
+
+    /**
+     * Returns the sub-label (e.g. "Employee" or "Job Title").
+     */
+    public function getDisplaySubtitleAttribute(): string
+    {
+        if ($this->isOrganization()) {
+            return 'Organization Account';
+        }
+
+        return $this->jobRole->title ?? 'Employee';
+    }
+
+    public function getDisplayAvatarAttribute(): string
+    {
+        if ($this->isOrganization() && $this->ownedOrganization && $this->ownedOrganization->logo_path) {
+            return asset($this->ownedOrganization->logo_path);
+        }
+
+        return "https://ui-avatars.com/api/?name=" . urlencode($this->name) . "&background=111827&color=fff";
+    }
+
+    // ── Role Helpers ─────────────────────────────────────────────────────────
+
+    public function isOrganization(): bool
+    {
+        return $this->user_type === 'organization';
+    }
+
+    public function isEmployee(): bool
+    {
+        return $this->user_type === 'employee';
+    }
+
+    public function isManager(): bool
+    {
+        // Managers are employees with elevated roles
+        return $this->isEmployee() && in_array($this->system_role, ['manager', 'hr']);
+    }
+
+    public function isOrgAdmin(): bool
+    {
+        // Org Admin can be the Organization user or an employee with admin role
+        return $this->isOrganization() || $this->system_role === 'org_admin';
     }
 }
