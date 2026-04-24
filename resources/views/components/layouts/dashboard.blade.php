@@ -38,20 +38,8 @@
                 </div>
             </footer>
 
-            <!-- Custom Pop Alerts Container -->
-            <div id="notifications-container" class="fixed bottom-8 right-8 z-[100] space-y-3">
-                @if (session()->has('message'))
-                    <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 5000)" class="bg-white border border-gray-100 rounded-2xl p-4 shadow-xl shadow-black/5 flex items-center gap-3 animate-in fade-in slide-in-from-right-4 duration-500">
-                        <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-green-600">
-                            <x-lucide-check-circle class="w-6 h-6" />
-                        </div>
-                        <div>
-                            <p class="font-semibold text-sm">Success</p>
-                            <p class="text-xs text-gray-500">{{ session('message') }}</p>
-                        </div>
-                    </div>
-                @endif
-            </div>
+            <!-- Global Alerts -->
+            <x-ui.alerts />
         </div>
     </div>
 

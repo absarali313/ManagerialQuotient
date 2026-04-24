@@ -1,11 +1,16 @@
-<x-ui.card class="flex-1 border-none shadow-sm h-full overflow-hidden">
+<x-ui.card x-data="{ fullscreen: false }" :class="fullscreen ? 'fixed inset-0 z-[100] m-4 bg-white shadow-2xl rounded-3xl' : 'flex-1 border-none shadow-sm h-full overflow-hidden'">
     <div class="flex justify-between items-center mb-6">
         <div>
             <h2 class="text-xl font-extrabold text-gray-900 tracking-tight">Department Health</h2>
             <p class="text-sm font-medium text-gray-400 mt-0.5">Average scores by division</p>
         </div>
-        <button class="p-1.5 text-gray-400 hover:text-gray-600 transition-colors">
-            <x-lucide-maximize-2 class="w-5 h-5" />
+        <button @click="fullscreen = !fullscreen" class="p-1.5 text-gray-400 hover:text-gray-600 transition-colors relative z-10 bg-white rounded">
+            <template x-if="!fullscreen">
+                <x-lucide-maximize-2 class="w-5 h-5" />
+            </template>
+            <template x-if="fullscreen">
+                <x-lucide-minimize-2 class="w-5 h-5" />
+            </template>
         </button>
     </div>
 

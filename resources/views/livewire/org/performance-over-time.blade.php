@@ -4,7 +4,7 @@
             <h2 class="text-xl font-extrabold text-gray-900 tracking-tight">Performance Over Time</h2>
             <p class="text-sm font-medium text-gray-400 mt-0.5">Average MQ score trajectory across organization</p>
         </div>
-        <div class="flex items-center gap-2">
+        <div x-data class="flex items-center gap-2">
             {{-- Time range pill buttons --}}
             <div class="flex bg-gray-50 border border-gray-100 p-1 rounded-xl gap-1">
                 @foreach($ranges as $val => $label)

@@ -6,14 +6,14 @@
             <p class="text-base text-gray-500 mt-1 font-medium">Overview of organizational performance and intelligence metrics.</p>
         </div>
         <div class="flex items-center gap-3">
-            <button class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-all shadow-sm">
+            <button wire:click="export" class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-all shadow-sm">
                 <x-lucide-download class="w-4 h-4" />
                 Export
             </button>
-            <button class="flex items-center gap-2 px-4 py-2 bg-[#5D45FD] text-white rounded-xl text-sm font-semibold hover:bg-[#4C36E0] transition-all shadow-md shadow-indigo-100">
+            <a href="{{ route('org-assessments') }}" class="flex items-center gap-2 px-4 py-2 bg-[#5D45FD] text-white rounded-xl text-sm font-semibold hover:bg-[#4C36E0] transition-all shadow-md shadow-indigo-100">
                 <x-lucide-plus class="w-4 h-4" />
                 New Assessment
-            </button>
+            </a>
         </div>
     </div>
 
