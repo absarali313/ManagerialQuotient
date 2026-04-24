@@ -3,7 +3,9 @@
 use App\Http\Controllers\FeaturesController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('home');
+
+Route::get('features', [FeaturesController::class, 'index'])->name('features_page');
 
 Route::get('features', [FeaturesController::class, 'index'])->name('features_page');
 

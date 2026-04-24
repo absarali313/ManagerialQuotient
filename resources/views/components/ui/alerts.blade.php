@@ -17,13 +17,13 @@
 >
     <!-- Template for PHP direct usage -->
     @if(session()->has('success'))
-        <div x-init="add('{{ session('success') }}', 'success')"></div>
+        <div x-init="add(@js(session('success')), 'success')"></div>
     @endif
     @if(session()->has('error'))
-        <div x-init="add('{{ session('error') }}', 'error')"></div>
+        <div x-init="add(@js(session('error')), 'error')"></div>
     @endif
     @if(session()->has('status'))
-        <div x-init="add('{{ session('status') }}', 'info')"></div>
+        <div x-init="add(@js(session('status')), 'info')"></div>
     @endif
 
     <template x-for="msg in messages" :key="msg.id">
