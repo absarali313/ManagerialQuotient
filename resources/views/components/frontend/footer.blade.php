@@ -2,11 +2,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-                        <span class="text-white font-black text-lg">MQ</span>
-                    </div>
-                    <span class="text-gray-900 font-extrabold text-xl tracking-tight">Managerial Quotient</span>
+                <div class="flex items-center mb-6">
+                    <img src="{{ asset('assets/images/logo.jpg') }}" alt="Managerial Quotient" class="h-10 w-auto">
                 </div>
                 <p class="text-gray-500 text-sm leading-relaxed max-w-sm">
                     Empowering managers with data-driven insights to build high-performing teams. Measure, analyze, and improve your managerial impact.

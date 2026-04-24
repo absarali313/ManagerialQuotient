@@ -2,21 +2,19 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <!-- Logo -->
-            <div class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
-                <a href="/" class="flex items-center gap-3">
-                    <div class="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-                        <span class="text-white font-black text-xl tracking-tight">MQ</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-gray-900 font-extrabold text-lg leading-tight tracking-tight">Managerial</span>
-                        <span class="text-blue-600 font-medium text-xs tracking-widest uppercase">Quotient</span>
-                    </div>
+            <div class="flex-shrink-0 flex items-center group cursor-pointer">
+                <a href="/" class="flex items-center">
+                    <img src="{{ asset('assets/images/logo.jpg') }}" alt="Managerial Quotient" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
                 </a>
             </div>
 
             <!-- Navigation Links -->
             <nav class="hidden md:flex items-center space-x-1">
-                <a href="#features" class="px-4 py-2 text-gray-500 hover:text-gray-900 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl">Features</a>
+                <a href="{{ route('features_page') }}" @class([
+                    'px-4 py-2 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl',
+                    'text-blue-600 bg-blue-50' => request()->routeIs('features_page'),
+                    'text-gray-500 hover:text-gray-900' => !request()->routeIs('features_page')
+                ])>Features</a>
                 <a href="#how-it-works" class="px-4 py-2 text-gray-500 hover:text-gray-900 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl">How it Works</a>
                 <a href="#benefits" class="px-4 py-2 text-gray-500 hover:text-gray-900 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl">Benefits</a>
                 <a href="#pricing" class="px-4 py-2 text-gray-500 hover:text-gray-900 text-sm font-semibold transition-all hover:bg-gray-50 rounded-xl">Pricing</a>
