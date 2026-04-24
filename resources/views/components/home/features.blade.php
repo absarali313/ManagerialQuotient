@@ -1,5 +1,5 @@
 <section class="py-24 bg-white" id="features">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1224px] mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-20">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Powerful Features for Modern Teams</h2>
             <p class="text-lg text-gray-500">Everything you need to easily manage, measure, and scale high-performance teams.</p>

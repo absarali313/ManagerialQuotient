@@ -3,17 +3,17 @@
         
         <!-- Hero Section -->
         <section class="relative pt-12 overflow-hidden">
-            <div class="max-w-5xl mx-auto px-10">
+            <div class="max-w-[1224px] mx-auto px-6 lg:px-0">
                 <div class="lg:flex lg:items-center lg:gap-14">
                     <div class="lg:w-1/2 space-y-5 relative z-10">
                         <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-bold tracking-widest uppercase">
                             <x-lucide-sparkles class="w-3 h-3" />
                             Performance Intelligence
                         </div>
-                        <h1 class="text-4xl sm:text-5xl font-extrabold font-outfit leading-tight text-gray-900 tracking-tight">
-                            Powerful Features for <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Performance Intelligence</span>
+                        <h1 class="text-5xl sm:text-6xl font-extrabold font-outfit leading-[1.1] text-gray-900 tracking-tight">
+                            Powerful Features for <br><span class="text-blue-600">Performance Intelligence</span>
                         </h1>
-                        <p class="text-base text-gray-500 leading-relaxed max-w-md">
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
                             Continuous, AI-driven decision system. Gain full visibility into workforce performance with real-time tracking and predictive analytics.
                         </p>
                         <div class="flex flex-wrap gap-3 pt-2">
@@ -48,8 +48,8 @@
         </section>
 
         <!-- Problems vs Solutions -->
-        <section class="max-w-5xl mx-auto px-10">
-            <div class="grid md:grid-cols-2 gap-8">
+        <section class="max-w-[1224px] mx-auto px-6 lg:px-0">
+            <div class="grid md:grid-cols-2 gap-12">
                 <!-- Problems -->
                 <div class="space-y-5">
                     <h2 class="text-lg font-black font-outfit text-gray-900 border-l-4 border-red-500 pl-3 uppercase tracking-wider">Traditional HR Gaps</h2>
@@ -89,10 +89,10 @@
         </section>
 
         <!-- Core System Capabilities -->
-        <section class="max-w-5xl mx-auto px-10 space-y-10">
-            <div class="text-center space-y-1">
-                <h2 class="text-2xl font-black font-outfit text-gray-900">System Capabilities</h2>
-                <p class="text-gray-500 max-w-md mx-auto text-sm leading-relaxed">Everything MQ does to transform performance.</p>
+        <section class="max-w-[1224px] mx-auto px-6 lg:px-0 space-y-12">
+            <div class="text-center space-y-2">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">System Capabilities</h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Everything MQ does to transform performance.</p>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
@@ -112,18 +112,18 @@
                         <div class="w-9 h-9 bg-{{ $cap['color'] }}-50 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                             <x-dynamic-component :component="$cap['icon']" class="w-4 h-4 text-{{ $cap['color'] }}-600" />
                         </div>
-                        <h3 class="text-[13px] font-black text-gray-900 mb-1 leading-tight">{{ $cap['title'] }}</h3>
-                        <p class="text-[11px] text-gray-500 leading-tight">{{ $cap['desc'] }}</p>
+                        <h3 class="text-base font-bold text-gray-900 mb-1 leading-tight">{{ $cap['title'] }}</h3>
+                        <p class="text-sm text-gray-500 leading-tight">{{ $cap['desc'] }}</p>
                     </div>
                 @endforeach
             </div>
         </section>
 
         <!-- AI Intelligence Layer -->
-        <section class="bg-gray-50/40 py-24 border-y border-gray-100/40">
-            <div class="max-w-4xl mx-auto px-10 space-y-12">
-                <div class="text-center space-y-1">
-                    <h2 class="text-2xl font-black font-outfit text-gray-900 uppercase tracking-wider">AI Intelligence Layer</h2>
+        <section class="bg-gray-50/40 py-28 border-y border-gray-100/40">
+            <div class="max-w-[1224px] mx-auto px-6 lg:px-0 space-y-16">
+                <div class="text-center space-y-2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight uppercase">AI Intelligence Layer</h2>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-5">
@@ -192,9 +192,9 @@
         </section>
 
         <!-- What Makes MQ Different -->
-        <section class="max-w-5xl mx-auto px-10 bg-yellow-50/20 py-24 rounded-[2.5rem]">
-            <div class="space-y-12">
-                <h2 class="text-2xl font-black font-outfit text-gray-900 text-center">What Makes Us Different</h2>
+        <section class="max-w-[1224px] mx-auto px-6 lg:px-0">
+            <div class="bg-yellow-50/20 py-24 rounded-[3rem] px-12 space-y-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center tracking-tight uppercase">What Makes Us Different</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
                     @foreach(['Standardization', 'Leaderboards', 'Exec Reports', 'Readiness', 'Benchmarks', 'Secure'] as $item)
                         <div class="bg-white p-5 rounded-xl border border-yellow-100 text-center space-y-2">
@@ -209,8 +209,8 @@
         </section>
 
         <!-- Final CTA -->
-        <section class="max-w-4xl mx-auto px-6">
-            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2rem] p-12 text-center space-y-6 shadow-lg relative overflow-hidden">
+        <section class="max-w-[1224px] mx-auto px-6 lg:px-0">
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[3rem] p-16 text-center space-y-8 shadow-lg relative overflow-hidden">
                 <h2 class="text-2xl sm:text-3xl font-black font-outfit text-white tracking-tight">
                     Scale Your Performance Intelligence
                 </h2>
