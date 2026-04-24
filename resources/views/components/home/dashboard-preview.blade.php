@@ -2,7 +2,7 @@
     <!-- Decor -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white -z-10"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-[1224px] mx-auto px-6 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Everything You Need in One Intelligent Dashboard</h2>
         <p class="text-lg text-gray-500 mb-16 max-w-2xl mx-auto">A unified interface crafted for managers. See team overview, individual metrics, and actionable AI insights at a glance.</p>
 

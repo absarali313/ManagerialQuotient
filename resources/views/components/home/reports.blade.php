@@ -1,5 +1,5 @@
 <section class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1224px] mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Comprehensive Reports & Insights</h2>
             <p class="text-lg text-gray-500">Generate powerful, presentation-ready insights with just one click.</p>

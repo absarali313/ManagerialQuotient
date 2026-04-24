@@ -4,7 +4,7 @@
         <svg class="absolute top-0 left-1/4 w-[1000px] h-[1000px] text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
     </div>
     
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <div class="max-w-[1224px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight">Start Building a High-Performance Organization Today</h2>
         <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto opacity-90">Join top companies that use Managerial Quotient to objectively measure, retain, and boost employee value.</p>
         
