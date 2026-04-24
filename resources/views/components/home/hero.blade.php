@@ -3,7 +3,7 @@
     <div class="absolute inset-x-0 top-0 h-[500px] -z-10"></div>
     <div class="absolute right-0 top-0 -translate-y-12 translate-x-1/3 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-3xl -z-10"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1224px] mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
             <!-- Left content -->
             <div class="max-w-2xl">

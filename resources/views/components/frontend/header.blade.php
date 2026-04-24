@@ -1,5 +1,5 @@
 <header class="w-full bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-100/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1224px] mx-auto px-6">
         <div class="flex justify-between items-center h-20">
             <!-- Logo -->
             <div class="flex-shrink-0 flex items-center group cursor-pointer">

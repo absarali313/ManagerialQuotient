@@ -1,5 +1,5 @@
 <section class="py-24 bg-gradient-to-br from-purple-100 to-purple-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1224px] mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <span class="text-purple-600 font-bold mb-3 tracking-wider text-sm uppercase block">AI-Powered System</span>
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">AI That Understands Your Workforce</h2>
