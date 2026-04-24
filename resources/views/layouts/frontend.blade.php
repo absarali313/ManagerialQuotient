@@ -13,12 +13,12 @@
 
         <!-- Scripts & Styles -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        
+
         <!-- Livewire Styles -->
         @livewireStyles
     </head>
     <body class="font-sans text-gray-900 antialiased bg-[#fcfdfe] selection:bg-blue-600 selection:text-white overflow-x-hidden">
-        
+
         <!-- Global Alerts -->
         <x-ui.alerts />
 
@@ -35,11 +35,13 @@
 
         <!-- Livewire Scripts -->
         @livewireScripts
-        
+
         <!-- Subtle background decoration -->
         <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
             <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50/50 blur-[120px] rounded-full"></div>
             <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] shadow-2xl bg-indigo-50/50 blur-[120px] rounded-full"></div>
         </div>
     </body>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </html>

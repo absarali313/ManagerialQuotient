@@ -1,4 +1,4 @@
-<x-auth-layout>
+<x-frontend-layout>
     <div class="flex min-h-screen font-sans bg-gray-50">
         <!-- Left Pattern/Gradient Side -->
         <div class="hidden lg:flex lg:w-1/2 relative bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700 overflow-hidden text-white flex-col justify-between p-12">
@@ -95,4 +95,4 @@
             </div>
         </div>
     </div>
-</x-auth-layout>
+</x-frontend-layout>
