@@ -7,8 +7,6 @@ Route::view('/', 'welcome')->name('home');
 
 Route::get('features', [FeaturesController::class, 'index'])->name('features_page');
 
-Route::get('features', [FeaturesController::class, 'index'])->name('features_page');
-
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
