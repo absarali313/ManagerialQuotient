@@ -10,46 +10,172 @@
         {{-- MAIN Group --}}
         @if(auth()->user()->isEmployee())
             <p class="px-3 pt-4 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Main</p>
-            <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('dashboard') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('dashboard') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("dashboard"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("dashboard"),
+                ])>
                 <x-lucide-layout-dashboard class="w-4 h-4" />
                 <span>Dashboard</span>
             </a>
-            <a href="{{ route('employees') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('employees') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('employees') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("employees"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("employees"),
+                ])>
                 <x-lucide-users class="w-4 h-4" />
                 <span>Employees</span>
             </a>
-            <a href="{{ route('departments') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('departments') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('departments') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("departments"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("departments"),
+                ])>
                 <x-lucide-building class="w-4 h-4" />
                 <span>Departments</span>
             </a>
 
             {{-- INTELLIGENCE Group --}}
             <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Intelligence</p>
-            <a href="{{ route('assessments') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('assessments') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('assessments') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("assessments"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("assessments"),
+                ])>
                 <x-lucide-clipboard-list class="w-4 h-4" />
                 <span>Assessments</span>
             </a>
-            <a href="{{ route('rankings') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('rankings') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('rankings') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("rankings"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("rankings"),
+                ])>
                 <x-lucide-trophy class="w-4 h-4" />
                 <span>Rankings</span>
             </a>
-            <a href="{{ route('ai-insights') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('ai-insights') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('ai-insights') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("ai-insights"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("ai-insights"),
+                ])>
                 <x-lucide-sparkles class="w-4 h-4" />
                 <span>AI Insights</span>
             </a>
 
             {{-- SYSTEM Group --}}
             <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">System</p>
-            <a href="{{ route('reports') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('reports') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('reports') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("reports"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("reports"),
+                ])>
                 <x-lucide-file-bar-chart class="w-4 h-4" />
                 <span>Reports</span>
             </a>
-            <a href="{{ route('notifications') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('notifications') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('notifications') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("notifications"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("notifications"),
+                ])>
                 <x-lucide-bell class="w-4 h-4" />
                 <span>Notifications</span>
                 <span class="ml-auto bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
             </a>
-            <a href="{{ route('settings') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('settings') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('settings') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("settings"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("settings"),
+                ])>
                 <x-lucide-settings class="w-4 h-4" />
                 <span>Settings</span>
             </a>
@@ -57,46 +183,172 @@
 
         @if(auth()->user()->isOrgAdmin())
             <p class="px-3 pt-4 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Main</p>
-            <a href="{{ route('org-dashboard') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-dashboard') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-dashboard') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-dashboard"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-dashboard"),
+                ])>
                 <x-lucide-layout-dashboard class="w-4 h-4" />
                 <span>Dashboard</span>
             </a>
-            <a href="{{ route('org-employees') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-employees') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-employees') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-employees"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-employees"),
+                ])>
                 <x-lucide-users class="w-4 h-4" />
                 <span>Employees</span>
             </a>
-            <a href="{{ route('org-departments') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-departments') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-departments') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-departments"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-departments"),
+                ])>
                 <x-lucide-building class="w-4 h-4" />
                 <span>Departments</span>
             </a>
 
             {{-- INTELLIGENCE Group --}}
             <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Intelligence</p>
-            <a href="{{ route('org-assessments') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-assessments') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-assessments') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-assessments"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-assessments"),
+                ])>
                 <x-lucide-clipboard-list class="w-4 h-4" />
                 <span>Assessments</span>
             </a>
-            <a href="{{ route('org-rankings') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-rankings') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-rankings') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-rankings"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-rankings"),
+                ])>
                 <x-lucide-trophy class="w-4 h-4" />
                 <span>Rankings</span>
             </a>
-            <a href="{{ route('org-ai-insights') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-ai-insights') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-ai-insights') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-ai-insights"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-ai-insights"),
+                ])>
                 <x-lucide-sparkles class="w-4 h-4" />
                 <span>AI Insights</span>
             </a>
 
             {{-- SYSTEM Group --}}
             <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">System</p>
-            <a href="{{ route('org-reports') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-reports') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-reports') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-reports"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-reports"),
+                ])>
                 <x-lucide-file-bar-chart class="w-4 h-4" />
                 <span>Reports</span>
             </a>
-            <a href="{{ route('org-notifications') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-notifications') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-notifications') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-notifications"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-notifications"),
+                ])>
                 <x-lucide-bell class="w-4 h-4" />
                 <span>Notifications</span>
                 <span class="ml-auto bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
             </a>
-            <a href="{{ route('org-settings') }}" class="flex items-center gap-3 px-3 py-2 {{ request()->routeIs('org-settings') ? 'bg-[#5D45FD] text-white shadow-md shadow-indigo-100' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700' }} rounded-xl font-semibold text-sm tracking-tight transition-all mb-0.5">
+            <a href="{{ route('org-settings') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org-settings"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org-settings"),
+                ])>
                 <x-lucide-settings class="w-4 h-4" />
                 <span>Settings</span>
             </a>

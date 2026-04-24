@@ -24,7 +24,17 @@
                     <tr class="group hover:bg-gray-50/50 transition-colors">
                         <td class="py-4">
                             @if($index < 3)
-                                <div class="w-7 h-7 rounded-full flex items-center justify-center {{ $index === 0 ? 'bg-yellow-50 text-yellow-600' : ($index === 1 ? 'bg-blue-50 text-blue-500' : 'bg-orange-50 text-orange-500') }}">
+                                <div @class([
+                                    'w-7',
+                                    'h-7',
+                                    'rounded-full',
+                                    'flex',
+                                    'items-center',
+                                    'justify-center',
+                                    'bg-yellow-50 text-yellow-600' => $index === 0,
+                                    'bg-blue-50 text-blue-500' => $index === 1,
+                                    'bg-orange-50 text-orange-500' => $index > 1, // i.e. $index === 2
+                                ])>
                                     <x-lucide-trophy class="w-3.5 h-3.5" />
                                 </div>
                             @else

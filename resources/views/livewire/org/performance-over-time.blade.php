@@ -10,7 +10,16 @@
                 @foreach($ranges as $val => $label)
                     <button
                         wire:click="setRange('{{ $val }}')"
-                        class="px-3 py-1.5 text-xs font-bold rounded-lg transition-all {{ $timeRange === $val ? 'bg-white shadow-sm text-gray-900' : 'text-gray-400 hover:text-gray-600' }}"
+                        @class([
+                            'px-3',
+                            'py-1.5',
+                            'text-xs',
+                            'font-bold',
+                            'rounded-lg',
+                            'transition-all',
+                            'bg-white shadow-sm text-gray-900' => $timeRange === $val,
+                            'text-gray-400 hover:text-gray-600' => $timeRange !== $val,
+                        ])
                     >
                         {{ $label }}
                     </button>
