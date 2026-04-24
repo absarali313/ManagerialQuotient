@@ -13,7 +13,7 @@
             <div>
                 <h4 class="text-gray-900 font-bold text-sm mb-6 uppercase tracking-wider">Product</h4>
                 <ul class="space-y-4">
-                    <li><a href="#features" class="text-gray-500 hover:text-blue-600 text-sm transition-colors">Features</a></li>
+                    <li><a href="{{ route('features_page') }}" class="text-gray-500 hover:text-blue-600 text-sm transition-colors">Features</a></li>
                     <li><a href="#how-it-works" class="text-gray-500 hover:text-blue-600 text-sm transition-colors">How it Works</a></li>
                     <li><a href="#pricing" class="text-gray-500 hover:text-blue-600 text-sm transition-colors">Pricing</a></li>
                 </ul>
