@@ -181,20 +181,26 @@
 
         <!-- Final CTA -->
         <section class="max-w-[1224px] mx-auto px-6 lg:px-0">
-            <div class="bg-gradient-to-br from-[#5D45FD] to-[#3B26CC] rounded-[4rem] p-16 text-center space-y-10 shadow-2xl shadow-indigo-200 relative overflow-hidden group">
+            <div class="bg-gradient-to-br from-[#5D45FD] to-[#3B26CC] rounded-[4rem] p-12 lg:p-20 shadow-2xl shadow-indigo-200 relative overflow-hidden group">
                 {{-- Decorative pulse --}}
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent)] group-hover:scale-150 transition-transform duration-1000"></div>
 
-                <div class="relative z-10 space-y-4">
-                    <h2 class="text-3xl sm:text-5xl font-black font-outfit text-white tracking-tight">
-                        Transform Your Organization Today
-                    </h2>
-                    <p class="text-white/70 text-lg max-w-xl mx-auto">Join the world's most intelligent companies in scaling performance through data, not intuition.</p>
-                </div>
-                
-                <div class="relative z-10 flex flex-wrap justify-center gap-4 text-center">
-                    <a href="#" class="px-8 py-4 bg-white text-[#5D45FD] rounded-2xl font-bold text-base shadow-xl hover:-translate-y-1 transition-all">Setup My Organization</a>
-                    <a href="#" class="px-8 py-4 bg-transparent text-white border-2 border-white/20 rounded-2xl font-bold text-base hover:bg-white/10 transition-all">Explore for Individuals</a>
+                <div class="relative z-10 grid md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl sm:text-5xl font-black font-outfit text-white tracking-tight leading-[1.1]">
+                            Transform Your <br>Organization Today
+                        </h2>
+                        <p class="text-white/70 text-lg leading-relaxed">Join the world's most intelligent companies in scaling performance through data-driven KPI mapping and talent ranking.</p>
+                        <a href="#" class="inline-block px-8 py-4 bg-white text-[#5D45FD] rounded-2xl font-bold text-base shadow-xl hover:-translate-y-1 transition-all">Setup My Organization</a>
+                    </div>
+                    
+                    <div class="space-y-6 md:border-l md:border-white/10 md:pl-16">
+                        <h2 class="text-2xl sm:text-3xl font-black font-outfit text-white tracking-tight">
+                            Master Your Growth
+                        </h2>
+                        <p class="text-white/60 text-lg leading-relaxed">Take control of your own professional trajectory. Use our individual-first assessments to benchmark your skills against global industry standards.</p>
+                        <a href="#" class="inline-block px-8 py-4 bg-transparent text-white border-2 border-white/20 rounded-2xl font-bold text-base hover:bg-white/10 transition-all">Explore for Individuals</a>
+                    </div>
                 </div>
             </div>
         </section>
