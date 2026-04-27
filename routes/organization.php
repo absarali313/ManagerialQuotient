@@ -2,6 +2,7 @@
 
 use App\Livewire\Org\AssessmentsIndex;
 use App\Livewire\Org\AssessmentsCreate;
+use App\Livewire\Org\AssessmentsEdit;
 use App\Http\Controllers\OrgDashboardController;
 use App\Http\Controllers\ComingSoonController;
 use Illuminate\Support\Facades\Route;
