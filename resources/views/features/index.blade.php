@@ -3,7 +3,7 @@
         
         <!-- Hero Section -->
         <section class="relative pt-12 overflow-hidden">
-            <div class="max-w-[1224px] mx-auto px-6 lg:px-0">
+            <div class="max-w-7xl mx-auto px-6 lg:px-0">
                 <div class="lg:flex lg:items-center lg:gap-14">
                     <div class="lg:w-1/2 space-y-5 relative z-10">
                         <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-bold tracking-widest uppercase">
@@ -48,7 +48,7 @@
         </section>
 
         <!-- SECTION 1: FOR ORGANIZATIONS (THE MAJOR PART) -->
-        <section class="max-w-[1224px] mx-auto px-6 lg:px-0">
+        <section class="max-w-7xl mx-auto px-6 lg:px-0">
             <div class="grid lg:grid-cols-12 gap-16 items-center">
                 <div class="lg:col-span-5 space-y-8">
                     <div class="space-y-4">
@@ -105,7 +105,7 @@
         </section>
 
         <!-- SECTION 2: FOR INDIVIDUALS (INDIVIDUAL USE FEATURE) -->
-        <section class="max-w-[1224px] mx-auto px-6 lg:px-0">
+        <section class="max-w-7xl mx-auto px-6 lg:px-0">
             <div class="bg-gray-900 rounded-[3rem] p-12 lg:p-20 relative overflow-hidden">
                 {{-- Abstract background effect --}}
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(99,102,241,0.15),transparent)] pointer-events-none"></div>
@@ -149,7 +149,7 @@
         </section>
 
         <!-- Final System Capabilities (Balanced Grid) -->
-        <section class="max-w-[1224px] mx-auto px-6 lg:px-0 space-y-12">
+        <section class="max-w-7xl mx-auto px-6 lg:px-0 space-y-12">
             <div class="text-center space-y-2">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight font-display">Unified Performance Logic</h2>
                 <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">The technology that powers both organizational scale and individual success.</p>
@@ -180,7 +180,7 @@
         </section>
 
         <!-- Final CTA -->
-        <section class="max-w-[1224px] mx-auto px-6 lg:px-0">
+        <section class="max-w-7xl mx-auto px-6 lg:px-0">
             <div class="bg-gradient-to-br from-[#5D45FD] to-[#3B26CC] rounded-[4rem] p-12 lg:p-20 shadow-2xl shadow-indigo-200 relative overflow-hidden group">
                 {{-- Decorative pulse --}}
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent)] group-hover:scale-150 transition-transform duration-1000"></div>

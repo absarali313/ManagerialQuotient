@@ -2,102 +2,63 @@
 
 namespace App\Livewire\Org;
 
+use App\Models\Assessment;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Contracts\View\View;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class AssessmentsIndex extends Component
 {
     use WithPagination;
 
-    public $search = '';
-    public $activeTab = 'All';
-    public $tabs = ['All', 'Technical', 'Soft Skills', 'Leadership', 'Compliance'];
+    public string $search = '';
+    public string $activeTab = 'All';
+    public array $tabs = ['All', 'Technical', 'Soft Skills', 'Leadership', 'Compliance'];
 
-    public function setTab($tab)
+    public function setTab(string $tab): void
     {
         $this->activeTab = $tab;
         $this->resetPage();
     }
 
-    public function updatedSearch()
+    public function updatedSearch(): void
     {
         $this->resetPage();
     }
 
-    public function render()
+    /**
+     * Get the filtered assessments from the database.
+     */
+    protected function getAssessments(): LengthAwarePaginator
     {
-        // Mock data to match the UI image provided
-        $allAssessments = [
-            [
-                'id' => 1,
-                'name' => 'Frontend Developer Assessment',
-                'description' => 'React, JavaScript, CSS fundamentals',
-                'category' => 'Technical',
-                'questions' => 32,
-                'last_modified' => 'Jun 12, 2025',
-                'modified_by' => 'Sarah Collins',
-                'status' => 'Published',
-                'icon' => 'code'
-            ],
-            [
-                'id' => 2,
-                'name' => 'Leadership & Communication Skills',
-                'description' => 'Team management and verbal skills',
-                'category' => 'Soft Skills',
-                'questions' => 24,
-                'last_modified' => 'Jun 10, 2025',
-                'modified_by' => 'Marcus Reid',
-                'status' => 'Published',
-                'icon' => 'users'
-            ],
-            [
-                'id' => 3,
-                'name' => 'Data Privacy & Compliance 2025',
-                'description' => 'GDPR, ISO 27001 basics',
-                'category' => 'Compliance',
-                'questions' => 40,
-                'last_modified' => 'Jun 08, 2025',
-                'modified_by' => 'Sarah Collins',
-                'status' => 'Draft',
-                'icon' => 'shield'
-            ],
-            [
-                'id' => 4,
-                'name' => 'Emotional Intelligence Evaluation',
-                'description' => 'EQ, empathy & self-awareness',
-                'category' => 'Soft Skills',
-                'questions' => 18,
-                'last_modified' => 'Jun 05, 2025',
-                'modified_by' => 'Priya Nair',
-                'status' => 'Published',
-                'icon' => 'star'
-            ],
-            [
-                'id' => 5,
-                'name' => 'Cloud Infrastructure & DevOps',
-                'description' => 'AWS, Docker, CI/CD pipelines',
-                'category' => 'Technical',
-                'questions' => 28,
-                'last_modified' => 'Jun 02, 2025',
-                'modified_by' => 'Tom Higgins',
-                'status' => 'Draft',
-                'icon' => 'layers'
-            ],
-        ];
+        $query = Assessment::query()
+            ->with(['jobRole', 'questions.kpi'])
+            ->where('organization_id', auth()->user()->organization_id);
 
-        $filtered = collect($allAssessments)
-            ->filter(function($item) {
-                $matchesSearch = empty($this->search) || 
-                                 str_contains(strtolower($item['name']), strtolower($this->search)) ||
-                                 str_contains(strtolower($item['description']), strtolower($this->search));
-                
-                $matchesTab = $this->activeTab === 'All' || $item['category'] === $this->activeTab;
-
-                return $matchesSearch && $matchesTab;
+        if ($this->activeTab !== 'All') {
+            $query->whereHas('questions.kpi', function ($q) {
+                $q->where('category', $this->activeTab);
             });
+        }
 
+        if (!empty($this->search)) {
+            $query->where(function ($q) {
+                $q->whereHas('jobRole', function ($inner) {
+                    $inner->where('title', 'like', '%' . $this->search . '%');
+                })->orWhereHas('questions', function ($inner) {
+                    $inner->where('question_text', 'like', '%' . $this->search . '%');
+                });
+            });
+        }
+
+        return $query->latest()->paginate(10);
+    }
+
+    public function render(): View
+    {
         return view('livewire.org.assessments-index', [
-            'assessments' => $filtered
+            'assessments' => $this->getAssessments()
         ])->layout('components.layouts.dashboard');
     }
 }
