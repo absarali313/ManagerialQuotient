@@ -79,10 +79,10 @@
                     <x-lucide-filter class="w-4 h-4" />
                     <span>Filter</span>
                 </button>
-                <button class="flex items-center gap-2 px-5 py-2 bg-[#5D45FD] text-white rounded-xl text-sm font-bold shadow-lg shadow-indigo-100 hover:bg-[#4C36E0] transition-all hover:-translate-y-0.5">
+                <a href="{{ route('org-assessments.create') }}" wire:navigate class="flex items-center gap-2 px-5 py-2 bg-[#5D45FD] text-white rounded-xl text-sm font-bold shadow-lg shadow-indigo-100 hover:bg-[#4C36E0] transition-all hover:-translate-y-0.5">
                     <x-lucide-plus class="w-4 h-4" />
                     <span>Deploy Assessment</span>
-                </button>
+                </a>
             </div>
         </div>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Org\AssessmentsIndex;
+use App\Livewire\Org\AssessmentsCreate;
 use App\Http\Controllers\OrgDashboardController;
 use App\Http\Controllers\ComingSoonController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ Route::middleware(['auth', 'verified', 'organization'])->group(function () {
 
     // ── Intelligence ─────────────────────────────────────────────────────────
     Route::get('org-assessments', AssessmentsIndex::class)->name('org-assessments');
+    Route::get('org-assessments/create', AssessmentsCreate::class)->name('org-assessments.create');
     Route::get('org-rankings', ComingSoonController::class)->name('org-rankings');
     Route::get('org-ai-insights', ComingSoonController::class)->name('org-ai-insights');
 
