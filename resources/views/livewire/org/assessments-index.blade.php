@@ -193,9 +193,9 @@
                             </td>
                             <td class="px-6 py-5 text-right">
                                 <div class="flex items-center justify-end gap-2">
-                                    <button class="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="View Details">
-                                        <x-lucide-eye class="w-4 h-4" />
-                                    </button>
+                                    <a href="{{ route('org-assessments.edit', $assessment) }}" wire:navigate class="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="Edit Assessment">
+                                        <x-lucide-edit-3 class="w-4 h-4" />
+                                    </a>
                                     <button class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all" title="Manage Questions">
                                         <x-lucide-settings class="w-4 h-4" />
                                     </button>
