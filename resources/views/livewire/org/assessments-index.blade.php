@@ -199,6 +199,9 @@
                                     <button class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all" title="Manage Questions">
                                         <x-lucide-settings class="w-4 h-4" />
                                     </button>
+                                    <button wire:click="deleteAssessment({{ $assessment->id }})" wire:confirm="Are you sure you want to delete this assessment?" class="p-2 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all" title="Delete">
+                                        <x-lucide-trash-2 class="w-4 h-4" />
+                                    </button>
                                 </div>
                             </td>
                         </tr>

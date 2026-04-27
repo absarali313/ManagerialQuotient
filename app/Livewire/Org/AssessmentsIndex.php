@@ -27,6 +27,17 @@ class AssessmentsIndex extends Component
         $this->resetPage();
     }
 
+    public function deleteAssessment(Assessment $assessment): void
+    {
+        // Ensure user belongs to the same organization
+        if ($assessment->organization_id !== auth()->user()->organization_id) {
+            return;
+        }
+
+        $assessment->delete();
+        session()->flash('success', 'Assessment deleted successfully.');
+    }
+
     /**
      * Get the filtered assessments from the database.
      */
