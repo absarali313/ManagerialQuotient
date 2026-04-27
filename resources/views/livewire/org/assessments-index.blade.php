@@ -86,24 +86,7 @@
             </div>
         </div>
 
-        {{-- Tabs --}}
-        <div class="px-6 border-b border-gray-50 overflow-x-auto whitespace-nowrap scrollbar-hide">
-            <div class="flex gap-8">
-                @foreach($tabs as $tab)
-                    <button wire:click="setTab('{{ $tab }}')" 
-                            @class([
-                                "py-4 text-sm font-bold transition-all relative",
-                                "text-blue-600" => $activeTab === $tab,
-                                "text-gray-400 hover:text-gray-600" => $activeTab !== $tab
-                            ])>
-                        {{ $tab }}
-                        @if($activeTab === $tab)
-                            <div class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 rounded-full"></div>
-                        @endif
-                    </button>
-                @endforeach
-            </div>
-        </div>
+
 
         {{-- Table --}}
         <div class="overflow-x-auto">

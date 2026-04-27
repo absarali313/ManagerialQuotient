@@ -13,14 +13,6 @@ class AssessmentsIndex extends Component
     use WithPagination;
 
     public string $search = '';
-    public string $activeTab = 'All';
-    public array $tabs = ['All', 'Technical', 'Soft Skills', 'Leadership', 'Compliance'];
-
-    public function setTab(string $tab): void
-    {
-        $this->activeTab = $tab;
-        $this->resetPage();
-    }
 
     public function updatedSearch(): void
     {
@@ -35,12 +27,6 @@ class AssessmentsIndex extends Component
         $query = Assessment::query()
             ->with(['jobRole', 'questions.kpi'])
             ->where('organization_id', auth()->user()->organization_id);
-
-        if ($this->activeTab !== 'All') {
-            $query->whereHas('questions.kpi', function ($q) {
-                $q->where('category', $this->activeTab);
-            });
-        }
 
         if (!empty($this->search)) {
             $query->where(function ($q) {
