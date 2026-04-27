@@ -196,6 +196,9 @@
                                     <a href="{{ route('org-assessments.edit', $assessment) }}" wire:navigate class="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="Edit Assessment">
                                         <x-lucide-edit-3 class="w-4 h-4" />
                                     </a>
+                                    <button wire:click="duplicateAssessment({{ $assessment->id }})" class="p-2 text-gray-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-all" title="Duplicate Assessment">
+                                        <x-lucide-copy class="w-4 h-4" />
+                                    </button>
                                     <button class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all" title="Manage Questions">
                                         <x-lucide-settings class="w-4 h-4" />
                                     </button>
