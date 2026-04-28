@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Organization;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,6 +13,8 @@ class OrgEmployeeController extends Controller
      */
     public function index(): View
     {
-        return view('organization.employees.index');
+        return view('organization.employees.index', [
+            'organization' => Organization::find(auth()->user()->organization->id)
+        ]);
     }
 }

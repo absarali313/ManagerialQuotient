@@ -29,7 +29,7 @@ class EmployeeIndex extends Component
     #[Url(except: 'asc')]
     public string $sortDir = 'asc';
 
-    private Organization $organization;
+    public Organization $organization;
 
     // ── Lifecycle ─────────────────────────────────────────────────────────────
 

@@ -20,7 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // ── Intelligence ─────────────────────────────────────────────────────────
     Route::get('org-assessments', AssessmentsIndex::class)->name('org-assessments');
-    Route::get('org-employees', ComingSoonController::class)->name('org-employees');
+//    Route::get('org-employees', ComingSoonController::class)->name('org-employees');
     Route::get('org-ai-insights', ComingSoonController::class)->name('org-ai-insights');
 
     // ── System ───────────────────────────────────────────────────────────────
