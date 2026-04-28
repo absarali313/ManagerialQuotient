@@ -152,9 +152,6 @@
                             </td>
                             <td class="px-6 py-5 text-right">
                                 <div class="flex items-center justify-end gap-2">
-                                    <button wire:click="duplicateAssessment({{ $assessment->id }})" class="p-2 text-gray-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-all" title="Duplicate Assessment">
-                                        <x-lucide-copy class="w-4 h-4" />
-                                    </button>
                                     <button wire:click="deleteAssessment({{ $assessment->id }})" 
                                             wire:confirm="Are you sure you want to delete this assessment?"
                                             class="p-2 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all" title="Delete Assessment">

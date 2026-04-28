@@ -29,20 +29,6 @@ class AssessmentsIndex extends Component
         session()->flash('success', 'Assessment deleted successfully.');
     }
 
-    public function duplicateAssessment(Assessment $assessment): void
-    {
-        if ($assessment->organization_id !== auth()->user()->organization_id) {
-            return;
-        }
-
-        $newAssessment = $assessment->replicate();
-        $newAssessment->status = 'pending';
-        $newAssessment->created_at = now();
-        $newAssessment->save();
-
-        session()->flash('success', 'Assessment duplicated successfully.');
-    }
-
     /**
      * Get the filtered assessments from the database.
      */
