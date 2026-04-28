@@ -11,13 +11,13 @@ return new class extends Migration
      * Section 8.3 — Talent Leaderboard
      *
      * Cached ranking records rebuilt after every evaluation cycle completes.
-     * Orders employees within a given scope (team / department / organization)
+     * Orders employees within a given scope (team / department / org)
      * by their current MQ score.
      *
      * scope_id interpretation:
      *   team         → teams.id
      *   department   → departments.id
-     *   organization → null (org-wide ranking)
+     *   org → null (org-wide ranking)
      */
     public function up(): void
     {
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Organization::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\EvaluationCycle::class)->nullable()->constrained()->nullOnDelete();
 
-            $table->enum('scope', ['team', 'department', 'organization']);
+            $table->enum('scope', ['team', 'department', 'org']);
             $table->unsignedBigInteger('scope_id')->nullable(); // team_id or dept_id; null = org-wide
 
             $table->unsignedInteger('rank');                   // position within scope (1 = top)

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Departments: organizational units within an organization.
+     * Departments: organizational units within an org.
      * A department can have a head (HR user or senior manager).
      * Supports Section 6.6 — Department Health Report.
      */
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            // Department codes must be unique per organization
+            // Department codes must be unique per org
             $table->unique(['organization_id', 'code']);
             $table->index(['organization_id', 'is_active']);
         });
