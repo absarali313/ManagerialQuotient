@@ -1,9 +1,9 @@
 @php
     $cards = [
-        ['label' => 'Total',     'value' => $stats['total'],    'icon' => 'users',       'color' => 'text-[#5D45FD]', 'bg' => 'bg-purple-50'],
-        ['label' => 'Active',    'value' => $stats['active'],   'icon' => 'user-check',  'color' => 'text-green-600',  'bg' => 'bg-green-50'],
-        ['label' => 'Inactive',  'value' => $stats['inactive'], 'icon' => 'user-x',      'color' => 'text-red-500',    'bg' => 'bg-red-50'],
-        ['label' => 'Avg Score', 'value' => $stats['avgScore'], 'icon' => 'bar-chart-2', 'color' => 'text-blue-600',   'bg' => 'bg-blue-50'],
+        ['label' => 'Total', 'value' => $stats['total'], 'icon' => 'users', 'color' => 'text-[#5D45FD]', 'bg' => 'bg-purple-50'],
+        ['label' => 'Active', 'value' => $stats['active'], 'icon' => 'user-check', 'color' => 'text-green-600', 'bg' => 'bg-green-50'],
+        ['label' => 'Inactive', 'value' => $stats['inactive'], 'icon' => 'user-x', 'color' => 'text-red-500', 'bg' => 'bg-red-50'],
+        ['label' => 'Avg Score', 'value' => $stats['avgScore'], 'icon' => 'bar-chart-2', 'color' => 'text-blue-600', 'bg' => 'bg-blue-50'],
     ];
 @endphp
 

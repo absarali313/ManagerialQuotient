@@ -1,25 +1,26 @@
 @php
-    $score    = $employee->current_mq_score ?? 0;
+    $score = $employee->current_mq_score ?? 0;
     $isActive = $employee->is_active ?? true;
     $deptName = $employee->department->name ?? 'N/A';
 
-    $barColor = match(true) {
+    $barColor = match (true) {
         $score >= 90 => '#5D45FD',
         $score >= 75 => '#3B82F6',
         $score >= 60 => '#F59E0B',
-        default      => '#EF4444',
+        default => '#EF4444',
     };
 
     $deptColors = [
-        'Engineering' => ['bg-blue-50',   'text-blue-600'],
-        'Product'     => ['bg-indigo-50', 'text-indigo-600'],
-        'Marketing'   => ['bg-pink-50',   'text-pink-600'],
-        'Sales'       => ['bg-green-50',  'text-green-600'],
-        'Design'      => ['bg-orange-50', 'text-orange-600'],
-        'Operations'  => ['bg-gray-100',  'text-gray-600'],
-        'HR'          => ['bg-purple-50', 'text-purple-600'],
-        'Finance'     => ['bg-teal-50',   'text-teal-600'],
+        'Engineering' => ['bg-blue-50', 'text-blue-600'],
+        'Product' => ['bg-indigo-50', 'text-indigo-600'],
+        'Marketing' => ['bg-pink-50', 'text-pink-600'],
+        'Sales' => ['bg-green-50', 'text-green-600'],
+        'Design' => ['bg-orange-50', 'text-orange-600'],
+        'Operations' => ['bg-gray-100', 'text-gray-600'],
+        'HR' => ['bg-purple-50', 'text-purple-600'],
+        'Finance' => ['bg-teal-50', 'text-teal-600'],
     ];
+
     [$badgeBg, $badgeText] = $deptColors[$deptName] ?? ['bg-gray-100', 'text-gray-600'];
 @endphp
 

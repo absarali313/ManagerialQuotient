@@ -40,8 +40,15 @@ class EmployeeIndex extends Component
 
     // ── Watchers ──────────────────────────────────────────────────────────────
 
-    public function updatedSearch(): void     { $this->resetPage(); }
-    public function updatedDepartment(): void { $this->resetPage(); }
+    public function updatedSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedDepartment(): void
+    {
+        $this->resetPage();
+    }
 
     // ── Sort ──────────────────────────────────────────────────────────────────
 
@@ -50,7 +57,7 @@ class EmployeeIndex extends Component
         if ($this->sortBy === $column) {
             $this->sortDir = $this->sortDir === 'asc' ? 'desc' : 'asc';
         } else {
-            $this->sortBy  = $column;
+            $this->sortBy = $column;
             $this->sortDir = 'asc';
         }
 
@@ -81,12 +88,14 @@ class EmployeeIndex extends Component
     {
         $employee = $this->resolveEmployee($userId);
 
-        if (! $employee) return;
+        if (! $employee) {
+            return;
+        }
 
         $employee->update(['is_active' => false]);
 
         $this->dispatch('notify', [
-            'type'    => 'success',
+            'type' => 'success',
             'message' => "{$employee->name} has been deactivated.",
         ]);
     }
@@ -95,12 +104,14 @@ class EmployeeIndex extends Component
     {
         $employee = $this->resolveEmployee($userId);
 
-        if (! $employee) return;
+        if (! $employee) {
+            return;
+        }
 
         $employee->update(['is_active' => true]);
 
         $this->dispatch('notify', [
-            'type'    => 'success',
+            'type' => 'success',
             'message' => "{$employee->name} has been reactivated.",
         ]);
     }
@@ -122,20 +133,19 @@ class EmployeeIndex extends Component
     #[Computed]
     public function stats(): array
     {
-        // Single query with conditional aggregates — avoids 3 round-trips.
         $row = $this->baseQuery()->selectRaw(
             'COUNT(*) as total,
              SUM(CASE WHEN is_active = 1 THEN 1 ELSE 0 END) as active_count,
              AVG(CASE WHEN current_mq_score IS NOT NULL THEN current_mq_score END) as avg_score'
         )->first();
 
-        $total    = (int) ($row->total ?? 0);
-        $active   = (int) ($row->active_count ?? 0);
+        $total = (int) ($row->total ?? 0);
+        $active = (int) ($row->active_count ?? 0);
         $avgScore = $row->avg_score ?? null;
 
         return [
-            'total'    => $total,
-            'active'   => $active,
+            'total' => $total,
+            'active' => $active,
             'inactive' => $total - $active,
             'avgScore' => $avgScore !== null ? number_format($avgScore, 1) : '—',
         ];
@@ -173,12 +183,10 @@ class EmployeeIndex extends Component
 
         $allowedColumns = ['name', 'email', 'current_mq_score', 'created_at', 'is_active'];
         $column = in_array($this->sortBy, $allowedColumns, true) ? $this->sortBy : 'name';
-        $dir    = $this->sortDir === 'desc' ? 'desc' : 'asc';
+        $dir = $this->sortDir === 'desc' ? 'desc' : 'asc';
 
         return $query->orderBy($column, $dir);
     }
-
-    // ── Private Helpers ───────────────────────────────────────────────────────
 
     private function resolveOrg(): Organization
     {
@@ -196,14 +204,12 @@ class EmployeeIndex extends Component
             ->first();
     }
 
-    // ── Render ────────────────────────────────────────────────────────────────
-
     public function render(): View
     {
         return view('livewire.org.employee.employee-index', [
-            'employees'   => $this->employees(),
+            'employees' => $this->employees(),
             'departments' => $this->departments(),
-            'stats'       => $this->stats(),
+            'stats' => $this->stats(),
         ]);
     }
 }

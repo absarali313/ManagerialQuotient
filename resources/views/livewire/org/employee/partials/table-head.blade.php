@@ -1,11 +1,11 @@
 @php
     $sortableColumns = [
-        ['key' => 'name',              'label' => 'Employee', 'sortable' => true],
-        ['key' => 'department',        'label' => 'Department', 'sortable' => false],
-        ['key' => 'jobRole',           'label' => 'Role', 'sortable' => false],
-        ['key' => 'is_active',         'label' => 'Status', 'sortable' => true],
-        ['key' => 'current_mq_score',  'label' => 'Score', 'sortable' => true],
-        ['key' => 'created_at',        'label' => 'Joined', 'sortable' => true],
+        ['key' => 'name', 'label' => 'Employee', 'sortable' => true],
+        ['key' => 'department', 'label' => 'Department', 'sortable' => false],
+        ['key' => 'jobRole', 'label' => 'Role', 'sortable' => false],
+        ['key' => 'is_active', 'label' => 'Status', 'sortable' => true],
+        ['key' => 'current_mq_score', 'label' => 'Score', 'sortable' => true],
+        ['key' => 'created_at', 'label' => 'Joined', 'sortable' => true],
     ];
 @endphp
 
