@@ -3,6 +3,7 @@
         <p class="text-sm font-semibold text-gray-500">
             Showing <strong>{{ $ranked->firstItem() }}–{{ $ranked->lastItem() }}</strong> of <strong>{{ $ranked->total() }}</strong> employees
         </p>
+
         <div class="flex items-center gap-1">
             @if($ranked->onFirstPage())
                 <span class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-300 cursor-not-allowed">

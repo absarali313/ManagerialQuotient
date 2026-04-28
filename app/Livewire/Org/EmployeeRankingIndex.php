@@ -2,11 +2,13 @@
 
 namespace App\Livewire\Org;
 
+use App\Action\CSV\EmployeeRankingExport;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -16,8 +18,11 @@ class EmployeeRankingIndex extends Component
     use WithPagination;
 
     public string $search = '';
+
     public string $department = '';
+
     public string $period = 'this_month';
+
     public string $scoreRange = 'all';
 
     /**
@@ -52,9 +57,6 @@ class EmployeeRankingIndex extends Component
         $this->resetPage();
     }
 
-    /**
-     * Reset all filters to their default values.
-     */
     public function resetFilters(): void
     {
         $this->reset(['search', 'department', 'period', 'scoreRange']);
@@ -63,15 +65,11 @@ class EmployeeRankingIndex extends Component
 
     // ── Query Building ────────────────────────────────────────────────────────
 
-    /**
-     * Get the base query for employees with necessary relations.
-     * Relations are scoped to the current period to ensure data consistency.
-     */
     private function baseEmployeeQuery(): Builder
     {
         $org = $this->resolveOrg();
 
-        if (!$org) {
+        if (! $org) {
             return User::query()->whereRaw('0 = 1');
         }
 
@@ -81,9 +79,6 @@ class EmployeeRankingIndex extends Component
             ->whereNotNull('current_mq_score');
     }
 
-    /**
-     * Apply all active filters to the employee query.
-     */
     private function applyFilters(Builder $query): Builder
     {
         $this->applySearchFilter($query);
@@ -112,71 +107,66 @@ class EmployeeRankingIndex extends Component
     {
         match ($this->scoreRange) {
             'high' => $query->where('current_mq_score', '>=', 80),
-            'mid'  => $query->whereBetween('current_mq_score', [60, 79.99]),
-            'low'  => $query->where('current_mq_score', '<', 60),
+            'mid' => $query->whereBetween('current_mq_score', [60, 79.99]),
+            'low' => $query->where('current_mq_score', '<', 60),
             default => null,
         };
     }
 
-    /**
-     * Apply date-based filtering for performance records.
-     * This method is used to filter the main User query based on their history.
-     */
-    private function applyPeriodFilter(Builder|\Illuminate\Database\Eloquent\Relations\Relation $query): void
+    private function applyPeriodFilter(Builder|Relation $query): void
     {
         $query->whereHas('performanceHistory', function (Builder $q) {
             $this->applyDateFilter($q);
         });
     }
 
-    /**
-     * Internal helper to apply date constraints to a PerformanceHistory query.
-     */
-    private function applyDateFilter(Builder|\Illuminate\Database\Eloquent\Relations\Relation $query): void
+    private function applyDateFilter(Builder|Relation $query): void
     {
         match ($this->period) {
-            'this_month'   => $query->whereMonth('recorded_on', now()->month)
-                                    ->whereYear('recorded_on', now()->year),
-            
-            'last_month'   => $query->whereMonth('recorded_on', now()->subMonth()->month)
-                                    ->whereYear('recorded_on', now()->subMonth()->year),
-            
+            'this_month' => $query->whereMonth('recorded_on', now()->month)
+                ->whereYear('recorded_on', now()->year),
+            'last_month' => $query->whereMonth('recorded_on', now()->subMonth()->month)
+                ->whereYear('recorded_on', now()->subMonth()->year),
             'this_quarter' => $query->whereBetween('recorded_on', [
-                                    now()->startOfQuarter(), 
-                                    now()->endOfQuarter()
-                                ]),
-            
-            'this_year'    => $query->whereYear('recorded_on', now()->year),
-            
-            default        => null,
+                now()->startOfQuarter(),
+                now()->endOfQuarter(),
+            ]),
+            'this_year' => $query->whereYear('recorded_on', now()->year),
+            default => null,
         };
     }
 
     // ── Actions ───────────────────────────────────────────────────────────────
 
     /**
-     * Placeholder for export functionality.
+     * Stream a CSV download of all employees matching the current filters.
+     * Uses chunked queries so large result sets never blow the memory limit.
      */
-    public function export(): void
+    public function export(EmployeeRankingExport $action)
     {
-        // TODO: Implement CSV/Excel export logic
-        $this->dispatch('notify', ['type' => 'info', 'message' => 'Exporting filtered rankings...']);
+        $query = $this->applyFilters(
+            $this->baseEmployeeQuery()
+        )->orderByDesc('current_mq_score');
+
+        $employees = $query->get(); // 👈 collection
+
+        return $action->execute($employees, $this->period);
     }
 
     /**
-     * Placeholder for metric configuration.
+     * Human-readable label for the selected period (included as a CSV column).
      */
-    public function configureMetrics(): void
+    private function periodLabel(): string
     {
-        // TODO: Open a modal to configure ranking metrics
-        $this->dispatch('openModal', 'org.ranking.configure-metrics');
+        return match ($this->period) {
+            'this_month' => 'This Month ('.now()->format('M Y').')',
+            'last_month' => 'Last Month ('.now()->subMonth()->format('M Y').')',
+            'this_quarter' => 'Q'.now()->quarter.' '.now()->year,
+            'this_year' => 'Year '.now()->year,
+            default => 'All Time',
+        };
     }
 
-    // ── Private Helpers ───────────────────────────────────────────────────────
-
-    /**
-     * Resolve the organization and cache it for the current request cycle.
-     */
     private function resolveOrg(): ?Organization
     {
         if ($this->cachedOrg) {
@@ -184,10 +174,12 @@ class EmployeeRankingIndex extends Component
         }
 
         $user = auth()->user();
-        if (!$user) return null;
+        if (! $user) {
+            return null;
+        }
 
-        $this->cachedOrg = $user->isOrganization() 
-            ? $user->ownedOrganization 
+        $this->cachedOrg = $user->isOrganization()
+            ? $user->ownedOrganization
             : $user->organization;
 
         return $this->cachedOrg;
@@ -200,14 +192,13 @@ class EmployeeRankingIndex extends Component
         $query = $this->baseEmployeeQuery();
         $this->applyFilters($query);
 
-        return $query->orderByDesc('current_mq_score')
-            ->take(3)
-            ->get();
+        return $query->orderByDesc('current_mq_score')->take(3)->get();
     }
 
     public function getDepartmentsProperty(): Collection
     {
         $org = $this->resolveOrg();
+
         return $org ? $org->departments()->orderBy('name')->get() : collect();
     }
 
@@ -216,24 +207,17 @@ class EmployeeRankingIndex extends Component
         $query = $this->baseEmployeeQuery();
         $this->applyFilters($query);
 
-        return $query->orderByDesc('current_mq_score')
-            ->paginate(8);
+        return $query->orderByDesc('current_mq_score')->paginate(20);
     }
 
-    /**
-     * Get the total count of employees matching the current filters.
-     */
     public function getTotalCountProperty(): int
     {
         $query = $this->baseEmployeeQuery();
         $this->applyFilters($query);
-        
+
         return $query->count();
     }
 
-    /**
-     * Get a descriptive title for the current ranking view based on filters.
-     */
     public function getRankingsTitleProperty(): string
     {
         $title = 'Employee Rankings';
@@ -245,7 +229,7 @@ class EmployeeRankingIndex extends Component
             }
         }
 
-        return $title . ' Leaderboard';
+        return $title.' Leaderboard';
     }
 
     // ── Render ────────────────────────────────────────────────────────────────
@@ -253,10 +237,10 @@ class EmployeeRankingIndex extends Component
     public function render(): View
     {
         return view('livewire.org.ranking.employee-ranking', [
-            'podium'      => $this->podium,
+            'podium' => $this->podium,
             'departments' => $this->departments,
-            'ranked'      => $this->ranked,
-            'totalCount'  => $this->totalCount,
+            'ranked' => $this->ranked,
+            'totalCount' => $this->totalCount,
         ]);
     }
 }

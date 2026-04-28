@@ -1,12 +1,7 @@
 <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-4">
     <div class="flex flex-wrap items-center gap-3">
         <div class="relative flex-1 min-w-[220px]">
-            <input
-                type="text"
-                wire:model.live.debounce.300ms="search"
-                placeholder="Filter employees..."
-                class="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-xl bg-gray-50 placeholder-gray-400 font-medium focus:outline-none focus:ring-2 focus:ring-[#5D45FD]/20 focus:border-[#5D45FD] transition"
-            >
+            <input type="text" wire:model.live.debounce.300ms="search" placeholder="Filter employees..." class="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-xl bg-gray-50 placeholder-gray-400 font-medium focus:outline-none focus:ring-2 focus:ring-[#5D45FD]/20 focus:border-[#5D45FD] transition">
         </div>
 
         <select wire:model.live="department" class="text-sm border border-gray-200 rounded-xl bg-gray-50 pr-6 py-2 font-semibold text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#5D45FD]/20 focus:border-[#5D45FD] transition cursor-pointer">
