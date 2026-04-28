@@ -5,15 +5,6 @@
             <h1 class="text-2xl font-bold font-display text-gray-900 tracking-tight">Assessments</h1>
             <p class="text-gray-500 text-sm mt-1">Manage and assign performance evaluations</p>
         </div>
-        <div class="flex items-center gap-3">
-            <button class="p-2.5 text-gray-400 hover:text-gray-600 bg-white border border-gray-100 rounded-xl shadow-sm transition-all hover:bg-gray-50 relative">
-                <x-lucide-bell class="w-5 h-5" />
-                <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-            </button>
-            <button class="p-2.5 text-gray-400 hover:text-gray-600 bg-white border border-gray-100 rounded-xl shadow-sm transition-all hover:bg-gray-50">
-                <x-lucide-mail class="w-5 h-5" />
-            </button>
-        </div>
     </div>
 
     {{-- Stats Grid --}}
