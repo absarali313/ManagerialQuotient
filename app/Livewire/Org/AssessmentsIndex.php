@@ -14,6 +14,16 @@ class AssessmentsIndex extends Component
 
     public string $search = '';
 
+    protected $listeners = [
+        'search-updated' => 'updateSearchFromEvent'
+    ];
+
+    public function updateSearchFromEvent($search): void
+    {
+        $this->search = $search;
+        $this->resetPage();
+    }
+
     public function updatedSearch(): void
     {
         $this->resetPage();
