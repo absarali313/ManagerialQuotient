@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Job Roles: role definitions per organization.
+     * Job Roles: role definitions per org.
      * KPI weights are assigned at the role level (Section 5.1).
      * Each role can belong to a department and has a seniority level.
      */

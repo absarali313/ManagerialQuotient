@@ -34,7 +34,7 @@ class Organization extends Model
     }
 
     /**
-     * All employee accounts belonging to this organization.
+     * All employee accounts belonging to this org.
      */
     public function employees(): HasMany
     {

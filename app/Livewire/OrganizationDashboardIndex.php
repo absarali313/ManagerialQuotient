@@ -12,7 +12,7 @@ class OrganizationDashboardIndex extends Component
         $org = $user->isOrganization() ? $user->ownedOrganization : $user->organization;
 
         if (!$org) {
-            session()->flash('error', 'No organization found.');
+            session()->flash('error', 'No org found.');
             return $this->redirect(request()->header('Referer') ?? '/');
         }
 
@@ -26,7 +26,7 @@ class OrganizationDashboardIndex extends Component
 
         return response()->streamDownload(function () use ($csv) {
             echo $csv; // Modern standard avoiding double quotes if possible, or keeping it clean.
-        }, 'organization-report-' . date('Y-m-d') . '.csv');
+        }, 'org-report-' . date('Y-m-d') . '.csv');
     }
 
     public function render(): \Illuminate\View\View

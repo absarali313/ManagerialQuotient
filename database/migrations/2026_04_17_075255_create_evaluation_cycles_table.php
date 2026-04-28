@@ -29,7 +29,7 @@ return new class extends Migration
             $table->date('ends_at')->nullable();
 
             // Optional scoping: restrict cycle to a sub-group
-            $table->enum('target_scope', ['organization', 'department', 'team'])->default('organization');
+            $table->enum('target_scope', ['org', 'department', 'team'])->default('org');
             $table->unsignedBigInteger('target_scope_id')->nullable(); // dept_id or team_id
 
             // Assessment configuration for auto-generated assessments

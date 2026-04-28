@@ -1,6 +1,6 @@
 <x-frontend-layout>
     <div class="space-y-28 pb-32">
-        
+
         <!-- Hero Section -->
         <section class="relative pt-12 overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 lg:px-0">
@@ -24,11 +24,11 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="lg:w-1/2 mt-10 lg:mt-0 relative">
                         <div class="relative z-10 bg-white/40 p-1 rounded-3xl shadow-lg backdrop-blur-sm border border-white/40 max-w-md mx-auto lg:ml-auto">
                             <img src="{{ asset('assets/images/dashboard_mockup.jpg') }}" alt="MQ Enterprise Dashboard" class="rounded-2xl shadow-inner w-full">
-                            
+
                             <!-- Floating KPI Tag -->
                             <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 animate-pulse">
                                 <div class="flex items-center gap-3">
@@ -62,7 +62,7 @@
                             'Custom KPI Engine' => 'Map assessments directly to your company\'s unique performance indicators.',
                             'Automated Evaluation Cycles' => 'Set recurrences for weekly, monthly, or quarterly assessment loops.',
                             'Dynamic Talent Ranking' => 'Compare performance across departments with real-time, bias-free leaderboards.',
-                            'Skill Gap Visualization' => 'Identify exactly where your organization is losing efficiency with AI depth.'
+                            'Skill Gap Visualization' => 'Identify exactly where your org is losing efficiency with AI depth.'
                         ] as $title => $desc)
                             <div class="flex gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-black/5 transition-all group">
                                 <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -80,7 +80,7 @@
                 <div class="lg:col-span-7 bg-gray-50/80 rounded-[2.5rem] p-10 border border-gray-100 flex items-center justify-center relative overflow-hidden group">
                     {{-- Decorative Elements --}}
                     <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl group-hover:bg-blue-400/20 transition-all duration-700"></div>
-                    
+
                     <div class="bg-white p-6 rounded-3xl shadow-2xl border border-white shadow-blue-900/10 w-full relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500">
                          <div class="flex items-center justify-between mb-8">
                             <h4 class="font-bold text-gray-900">Department Benchmarking</h4>
@@ -109,7 +109,7 @@
             <div class="bg-gray-900 rounded-[3rem] p-12 lg:p-20 relative overflow-hidden">
                 {{-- Abstract background effect --}}
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(99,102,241,0.15),transparent)] pointer-events-none"></div>
-                
+
                 <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div class="order-2 lg:order-1">
                         <div class="grid grid-cols-2 gap-4">
@@ -154,7 +154,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight font-display">Unified Performance Logic</h2>
                 <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">The technology that powers both organizational scale and individual success.</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 @php
                 $capabilities = [
@@ -193,7 +193,7 @@
                         <p class="text-white/70 text-lg leading-relaxed">Join the world's most intelligent companies in scaling performance through data-driven KPI mapping and talent ranking.</p>
                         <a href="#" class="inline-block px-8 py-4 bg-white text-[#5D45FD] rounded-2xl font-bold text-base shadow-xl hover:-translate-y-1 transition-all">Setup My Organization</a>
                     </div>
-                    
+
                     <div class="space-y-6 md:border-l md:border-white/10 md:pl-16">
                         <h2 class="text-2xl sm:text-3xl font-black font-outfit text-white tracking-tight">
                             Master Your Growth
