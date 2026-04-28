@@ -32,7 +32,7 @@ class GoogleLoginController extends Controller
 
             if ($user) {
                 if (! $user->is_active) {
-                    return redirect()->route('login')->with('error', 'Your account is inactive. Please contact your organization administrator.');
+                    return redirect()->route('login')->with('error', 'Your account is inactive. Please contact your org administrator.');
                 }
 
                 Auth::login($user, true);

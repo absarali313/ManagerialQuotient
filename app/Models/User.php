@@ -44,8 +44,8 @@ class User extends Authenticatable
     // ── Relationships ────────────────────────────────────────────────────────
 
     /**
-     * For employees: the organization they belong to.
-     * For organization users: the organization they own.
+     * For employees: the org they belong to.
+     * For org users: the org they own.
      */
     public function organization(): BelongsTo
     {
@@ -97,11 +97,17 @@ class User extends Authenticatable
         return $this->hasMany(PerformanceHistory::class)->orderBy('recorded_on', 'asc');
     }
 
+    public function latestPerformanceHistory(): HasOne
+    {
+        return $this->hasOne(PerformanceHistory::class)
+            ->latestOfMany('recorded_on');
+    }
+
     // ── Identity Resolution ──────────────────────────────────────────────────
 
     /**
      * Returns the name to display in the UI.
-     * If organization type, it returns the company name.
+     * If org type, it returns the company name.
      */
     public function getDisplayNameAttribute(): string
     {
@@ -137,7 +143,7 @@ class User extends Authenticatable
 
     public function isOrganization(): bool
     {
-        return $this->user_type === 'organization';
+        return $this->user_type === 'org';
     }
 
     public function isEmployee(): bool

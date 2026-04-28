@@ -5,7 +5,7 @@ use App\Http\Controllers\OrgDashboardController;
 use App\Http\Controllers\ComingSoonController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'verified', 'organization'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     // ── Dashboard ────────────────────────────────────────────────────────────
     Route::get('org-dashboard', [OrgDashboardController::class, 'index'])
@@ -14,11 +14,13 @@ Route::middleware(['auth', 'verified', 'organization'])->group(function () {
     // ── Main ─────────────────────────────────────────────────────────────────
     Route::get('org-employees', [\App\Http\Controllers\OrgEmployeeController::class, 'index'])
         ->name('org-employees');
+    Route::get('org-rankings', [\App\Http\Controllers\OrgEmployeeRankingController::class, 'index'])
+        ->name('org-rankings');
     Route::get('org-departments', ComingSoonController::class)->name('org-departments');
 
     // ── Intelligence ─────────────────────────────────────────────────────────
     Route::get('org-assessments', AssessmentsIndex::class)->name('org-assessments');
-    Route::get('org-rankings', ComingSoonController::class)->name('org-rankings');
+    Route::get('org-employees', ComingSoonController::class)->name('org-employees');
     Route::get('org-ai-insights', ComingSoonController::class)->name('org-ai-insights');
 
     // ── System ───────────────────────────────────────────────────────────────

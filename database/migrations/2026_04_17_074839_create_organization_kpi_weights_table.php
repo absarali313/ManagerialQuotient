@@ -15,7 +15,7 @@ return new class extends Migration
      * Scope hierarchy:
      *   job_role  → most specific (takes precedence)
      *   department → fallback if no role-level weight exists
-     *   organization → global fallback
+     *   org → global fallback
      *
      * The weighted scoring formula applied during evaluation:
      *   weighted_kpi_score = (raw_score / max_score) * weight
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Kpi::class)->constrained()->cascadeOnDelete();
 
             // Scope: which entity does this weight apply to?
-            $table->enum('scope', ['organization', 'department', 'job_role']);
+            $table->enum('scope', ['org', 'department', 'job_role']);
             $table->unsignedBigInteger('scope_id')->nullable(); // dept_id or job_role_id; null = org-wide
 
             $table->unsignedTinyInteger('weight');             // 1–100

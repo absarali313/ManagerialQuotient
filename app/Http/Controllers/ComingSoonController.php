@@ -23,14 +23,14 @@ class ComingSoonController extends Controller
         ];
 
         $descriptions = [
-            'employees'     => 'Add, manage, and evaluate all employees in your organization.',
+            'employees'     => 'Add, manage, and evaluate all employees in your org.',
             'departments'   => 'Organize your workforce into departments and track team-level performance.',
             'assessments'   => 'Design and deploy custom assessments to measure managerial intelligence.',
-            'rankings'      => 'Compare and rank employees across teams, departments, or the entire organization.',
+            'rankings'      => 'Compare and rank employees across teams, departments, or the entire org.',
             'ai-insights'   => 'Deep-dive into AI-generated insights and recommendations for your team.',
             'reports'       => 'Generate detailed performance and benchmark reports for any period.',
             'notifications' => 'View and manage all your system notifications and alerts.',
-            'settings'      => 'Configure your account, organization settings, and preferences.',
+            'settings'      => 'Configure your account, org settings, and preferences.',
         ];
 
         return view('coming-soon', [
