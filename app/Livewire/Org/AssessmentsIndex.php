@@ -25,15 +25,18 @@ class AssessmentsIndex extends Component
     protected function getAssessments(): LengthAwarePaginator
     {
         $query = Assessment::query()
-            ->with(['jobRole', 'questions.kpi'])
+            ->with(['jobRole', 'assignedTo.department'])
             ->where('organization_id', auth()->user()->organization_id);
 
         if (!empty($this->search)) {
             $query->where(function ($q) {
                 $q->whereHas('jobRole', function ($inner) {
                     $inner->where('title', 'like', '%' . $this->search . '%');
-                })->orWhereHas('questions', function ($inner) {
-                    $inner->where('question_text', 'like', '%' . $this->search . '%');
+                })->orWhereHas('assignedTo', function ($inner) {
+                    $inner->where('name', 'like', '%' . $this->search . '%')
+                        ->orWhereHas('department', function ($dept) {
+                            $dept->where('name', 'like', '%' . $this->search . '%');
+                        });
                 });
             });
         }

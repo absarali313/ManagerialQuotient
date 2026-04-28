@@ -81,7 +81,7 @@
                 </button>
                 <button class="flex items-center gap-2 px-5 py-2 bg-[#5D45FD] text-white rounded-xl text-sm font-bold shadow-lg shadow-indigo-100 hover:bg-[#4C36E0] transition-all hover:-translate-y-0.5">
                     <x-lucide-plus class="w-4 h-4" />
-                    <span>Deploy Assessment</span>
+                    <span>Create Assessment</span>
                 </button>
             </div>
         </div>
@@ -96,13 +96,12 @@
                         <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest w-12 text-center">
                             <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
                         </th>
-                        <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                            Job Role / Assessment
+                        <th class="px-8 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                            Assessment
                             <x-lucide-chevron-down class="w-3 h-3" />
                         </th>
-                        <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest">Category</th>
                         <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest text-center">Assigned To</th>
-                        <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest text-center">Questions</th>
+                        <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest text-center">Level</th>
                         <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest text-center">Duration</th>
                         <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest">Status</th>
                         <th class="px-6 py-4 text-[11px] font-extrabold text-gray-400 uppercase tracking-widest text-right">Actions</th>
@@ -125,25 +124,6 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-5">
-                                @php
-                                    $firstKpi = $assessment->questions->first()?->kpi;
-                                    $category = $firstKpi?->category ?? 'General';
-                                @endphp
-                                <span @class([
-                                    "px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1.5",
-                                    "bg-blue-100 text-blue-700" => $category === 'Technical',
-                                    "bg-purple-100 text-purple-700" => $category === 'Soft Skills',
-                                    "bg-emerald-100 text-emerald-700" => $category === 'Compliance',
-                                    "bg-rose-100 text-rose-700" => $category === 'Leadership',
-                                    "bg-gray-100 text-gray-700" => !in_array($category, ['Technical', 'Soft Skills', 'Compliance', 'Leadership'])
-                                ])>
-                                    <span @class([
-                                        "w-1 h-1 rounded-full text-current bg-current opacity-70",
-                                    ])></span>
-                                    {{ $category }}
-                                </span>
-                            </td>
                             <td class="px-6 py-5 text-center">
                                 <div class="flex flex-col items-center">
                                     <p class="text-sm font-bold text-gray-900 tracking-tight">{{ $assessment->assignedTo?->name }}</p>
@@ -151,7 +131,9 @@
                                 </div>
                             </td>
                             <td class="px-6 py-5 text-center">
-                                <span class="text-sm font-bold text-gray-700">{{ $assessment->questions_count ?? $assessment->questions->count() }}</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-gray-100 text-gray-700 border border-gray-200">
+                                    L{{ $assessment->level }}
+                                </span>
                             </td>
                             <td class="px-6 py-5 text-center">
                                 <span class="text-sm font-bold text-gray-700">{{ $assessment->duration_minutes }}m</span>
@@ -187,7 +169,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="px-6 py-12 text-center">
+                            <td colspan="7" class="px-6 py-12 text-center">
                                 <div class="flex flex-col items-center gap-3">
                                     <x-lucide-search class="w-12 h-12 text-gray-200" />
                                     <p class="text-gray-500 font-medium">No assessments found matching your search.</p>
