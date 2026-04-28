@@ -75,18 +75,12 @@
                            placeholder="Search evaluations..." 
                            class="pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl text-sm focus:ring-2 focus:ring-blue-500/20 w-64 transition-all">
                 </div>
-                <button class="flex items-center gap-2 px-4 py-2 border border-gray-100 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">
-                    <x-lucide-filter class="w-4 h-4" />
-                    <span>Filter</span>
-                </button>
                 <button class="flex items-center gap-2 px-5 py-2 bg-[#5D45FD] text-white rounded-xl text-sm font-bold shadow-lg shadow-indigo-100 hover:bg-[#4C36E0] transition-all hover:-translate-y-0.5">
                     <x-lucide-plus class="w-4 h-4" />
                     <span>Create Assessment</span>
                 </button>
             </div>
         </div>
-
-
 
         {{-- Table --}}
         <div class="overflow-x-auto">
@@ -161,7 +155,7 @@
                                     <button class="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="View Details">
                                         <x-lucide-eye class="w-4 h-4" />
                                     </button>
-                                    <button class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all" title="Manage Questions">
+                                    <button class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all" title="Settings">
                                         <x-lucide-settings class="w-4 h-4" />
                                     </button>
                                 </div>
