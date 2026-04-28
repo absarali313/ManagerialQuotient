@@ -8,6 +8,8 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,22 +17,33 @@ class EmployeeIndex extends Component
 {
     use WithPagination;
 
-    public string $search     = '';
+    #[Url(except: '')]
+    public string $search = '';
+
+    #[Url(except: '')]
     public string $department = '';
-    public string $sortBy     = 'name';
-    public string $sortDir    = 'asc';
 
-    private ?Organization $cachedOrg = null;
+    #[Url(except: 'name')]
+    public string $sortBy = 'name';
 
-    protected array $queryString = [
-        'search'     => ['except' => ''],
-        'department' => ['except' => ''],
-        'sortBy'     => ['except' => 'name'],
-        'sortDir'    => ['except' => 'asc'],
-    ];
+    #[Url(except: 'asc')]
+    public string $sortDir = 'asc';
+
+    private Organization $organization;
+
+    // ── Lifecycle ─────────────────────────────────────────────────────────────
+
+    public function mount(): void
+    {
+        $this->organization = $this->resolveOrg();
+    }
+
+    // ── Watchers ──────────────────────────────────────────────────────────────
 
     public function updatedSearch(): void     { $this->resetPage(); }
     public function updatedDepartment(): void { $this->resetPage(); }
+
+    // ── Sort ──────────────────────────────────────────────────────────────────
 
     public function sort(string $column): void
     {
@@ -43,6 +56,8 @@ class EmployeeIndex extends Component
 
         $this->resetPage();
     }
+
+    // ── Filters ───────────────────────────────────────────────────────────────
 
     public function resetFilters(): void
     {
@@ -90,24 +105,64 @@ class EmployeeIndex extends Component
         ]);
     }
 
+    // ── Computed Properties ───────────────────────────────────────────────────
+
+    #[Computed]
+    public function employees(): LengthAwarePaginator
+    {
+        return $this->filteredQuery()->paginate(15);
+    }
+
+    #[Computed]
+    public function departments(): Collection
+    {
+        return $this->organization->departments()->orderBy('name')->get();
+    }
+
+    #[Computed]
+    public function stats(): array
+    {
+        // Single query with conditional aggregates — avoids 3 round-trips.
+        $row = $this->baseQuery()->selectRaw(
+            'COUNT(*) as total,
+             SUM(CASE WHEN is_active = 1 THEN 1 ELSE 0 END) as active_count,
+             AVG(CASE WHEN current_mq_score IS NOT NULL THEN current_mq_score END) as avg_score'
+        )->first();
+
+        $total    = (int) ($row->total ?? 0);
+        $active   = (int) ($row->active_count ?? 0);
+        $avgScore = $row->avg_score ?? null;
+
+        return [
+            'total'    => $total,
+            'active'   => $active,
+            'inactive' => $total - $active,
+            'avgScore' => $avgScore !== null ? number_format($avgScore, 1) : '—',
+        ];
+    }
+
     // ── Query Building ────────────────────────────────────────────────────────
 
+    /**
+     * Scoped to the current org, excluding org-type accounts.
+     * Eager-loads relationships needed by the table row partial.
+     */
     private function baseQuery(): Builder
     {
-        $org = $this->resolveOrg();
-
-        if (! $org) {
-            return User::query()->whereRaw('0 = 1');
-        }
-
         return User::query()
-            ->where('organization_id', $org->id)
+            ->where('organization_id', $this->organization->id)
             ->whereNot('user_type', 'organization')
             ->with(['department', 'jobRole']);
     }
 
-    private function applyFilters(Builder $query): Builder
+    /**
+     * Applies active search + department filters on top of the base query,
+     * then applies sorting. Returns a ready-to-paginate Builder.
+     */
+    private function filteredQuery(): Builder
     {
+        $query = $this->baseQuery();
+
         if ($this->search) {
             $query->whereAny(['name', 'email'], 'like', "%{$this->search}%");
         }
@@ -116,80 +171,28 @@ class EmployeeIndex extends Component
             $query->where('department_id', $this->department);
         }
 
-        return $query;
-    }
-
-    private function applySort(Builder $query): Builder
-    {
-        $allowed = ['name', 'email', 'current_mq_score', 'created_at', 'is_active'];
-
-        $column = in_array($this->sortBy, $allowed, true) ? $this->sortBy : 'name';
+        $allowedColumns = ['name', 'email', 'current_mq_score', 'created_at', 'is_active'];
+        $column = in_array($this->sortBy, $allowedColumns, true) ? $this->sortBy : 'name';
         $dir    = $this->sortDir === 'desc' ? 'desc' : 'asc';
 
         return $query->orderBy($column, $dir);
     }
 
-    // ── Computed Properties ───────────────────────────────────────────────────
-
-    public function getEmployeesProperty(): LengthAwarePaginator
-    {
-        $query = $this->baseQuery();
-        $this->applyFilters($query);
-        $this->applySort($query);
-
-        return $query->paginate(15);
-    }
-
-    public function getDepartmentsProperty(): Collection
-    {
-        $org = $this->resolveOrg();
-
-        return $org ? $org->departments()->orderBy('name')->get() : collect();
-    }
-
-    public function getStatsProperty(): array
-    {
-        $base = $this->baseQuery();
-
-        $total    = (clone $base)->count();
-        $active   = (clone $base)->where('is_active', true)->count();
-        $inactive = $total - $active;
-        $avgScore = (clone $base)->whereNotNull('current_mq_score')->avg('current_mq_score');
-
-        return [
-            'total'    => $total,
-            'active'   => $active,
-            'inactive' => $inactive,
-            'avgScore' => $avgScore ? number_format($avgScore, 1) : '—',
-        ];
-    }
-
     // ── Private Helpers ───────────────────────────────────────────────────────
 
-    private function resolveOrg(): ?Organization
+    private function resolveOrg(): Organization
     {
-        if ($this->cachedOrg) {
-            return $this->cachedOrg;
-        }
-
         $user = auth()->user();
-        if (! $user) return null;
 
-        $this->cachedOrg = $user->isOrganization()
+        return $user->isOrganization()
             ? $user->ownedOrganization
             : $user->organization;
-
-        return $this->cachedOrg;
     }
 
     private function resolveEmployee(int $userId): ?User
     {
-        $org = $this->resolveOrg();
-
-        if (! $org) return null;
-
         return User::where('id', $userId)
-            ->where('organization_id', $org->id)
+            ->where('organization_id', $this->organization->id)
             ->first();
     }
 
@@ -198,9 +201,9 @@ class EmployeeIndex extends Component
     public function render(): View
     {
         return view('livewire.org.employee.employee-index', [
-            'employees'   => $this->employees,
-            'departments' => $this->departments,
-            'stats'       => $this->stats,
+            'employees'   => $this->employees(),
+            'departments' => $this->departments(),
+            'stats'       => $this->stats(),
         ]);
     }
 }
