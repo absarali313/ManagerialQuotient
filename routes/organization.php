@@ -12,6 +12,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('org-dashboard');
 
     // ── Main ─────────────────────────────────────────────────────────────────
+    Route::get('org-employees', [\App\Http\Controllers\OrgEmployeeController::class, 'index'])
+        ->name('org-employees');
     Route::get('org-rankings', [\App\Http\Controllers\OrgEmployeeRankingController::class, 'index'])
         ->name('org-rankings');
     Route::get('org-departments', ComingSoonController::class)->name('org-departments');
