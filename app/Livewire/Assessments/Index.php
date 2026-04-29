@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Org;
+namespace App\Livewire\Assessments;
 
 use App\Models\Assessment;
 use Livewire\Component;
@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class AssessmentsIndex extends Component
+class Index extends Component
 {
     use WithPagination;
 
@@ -66,8 +66,8 @@ class AssessmentsIndex extends Component
 
     public function render(): View
     {
-        return view('livewire.org.assessments-index', [
+        return view('livewire.assessments.index', [
             'assessments' => $this->getAssessments()
-        ])->layout('components.layouts.dashboard');
+        ]);
     }
 }

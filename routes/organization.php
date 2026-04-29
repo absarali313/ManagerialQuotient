@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Org\AssessmentsIndex;
+use App\Livewire\Assessments\Index as AssessmentsIndex;
 use App\Http\Controllers\OrgDashboardController;
 use App\Http\Controllers\ComingSoonController;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +16,9 @@ Route::middleware(['auth', 'verified', 'organization'])->group(function () {
     Route::get('org-departments', ComingSoonController::class)->name('org-departments');
 
     // ── Intelligence ─────────────────────────────────────────────────────────
-    Route::get('org-assessments', AssessmentsIndex::class)->name('org-assessments');
+    Route::get('org-assessments', function () {
+        return view('assessments.index');
+    })->name('org-assessments');
     Route::get('org-rankings', ComingSoonController::class)->name('org-rankings');
     Route::get('org-ai-insights', ComingSoonController::class)->name('org-ai-insights');
 
