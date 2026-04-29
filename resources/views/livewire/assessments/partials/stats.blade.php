@@ -4,7 +4,7 @@
             <x-lucide-clipboard-check class="w-6 h-6" />
         </div>
         <div>
-            <p class="text-2xl font-bold text-gray-900">{{ App\Models\Assessment::where('organization_id', auth()->user()->organization_id)->count() }}</p>
+            <p class="text-2xl font-bold text-gray-900">{{ $stats['total'] }}</p>
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Total Assignments</p>
         </div>
     </div>
@@ -14,7 +14,7 @@
             <x-lucide-check-circle class="w-6 h-6" />
         </div>
         <div>
-            <p class="text-2xl font-bold text-gray-900">{{ App\Models\Assessment::where('organization_id', auth()->user()->organization_id)->where('status', 'completed')->count() }}</p>
+            <p class="text-2xl font-bold text-gray-900">{{ $stats['completed'] }}</p>
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Completed</p>
         </div>
     </div>
@@ -24,7 +24,7 @@
             <x-lucide-clock class="w-6 h-6" />
         </div>
         <div>
-            <p class="text-2xl font-bold text-gray-900">{{ App\Models\Assessment::where('organization_id', auth()->user()->organization_id)->whereIn('status', ['pending', 'in_progress'])->count() }}</p>
+            <p class="text-2xl font-bold text-gray-900">{{ $stats['active'] }}</p>
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Active</p>
         </div>
     </div>
@@ -34,7 +34,7 @@
             <x-lucide-users class="w-6 h-6" />
         </div>
         <div>
-            <p class="text-2xl font-bold text-gray-900">{{ App\Models\User::where('organization_id', auth()->user()->organization_id)->count() }}</p>
+            <p class="text-2xl font-bold text-gray-900">{{ $stats['org_size'] }}</p>
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Org Size</p>
         </div>
     </div>

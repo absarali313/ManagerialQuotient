@@ -40,6 +40,21 @@ class Index extends Component
     }
 
     /**
+     * Get assessment statistics for the organization.
+     */
+    public function getStatsProperty(): array
+    {
+        $baseQuery = Assessment::where('organization_id', auth()->user()->organization_id);
+
+        return [
+            'total' => (clone $baseQuery)->count(),
+            'completed' => (clone $baseQuery)->where('status', 'completed')->count(),
+            'active' => (clone $baseQuery)->whereIn('status', ['pending', 'in_progress'])->count(),
+            'org_size' => \App\Models\User::where('organization_id', auth()->user()->organization_id)->count(),
+        ];
+    }
+
+    /**
      * Get the filtered assessments from the database.
      */
     protected function getAssessments(): LengthAwarePaginator
@@ -67,7 +82,8 @@ class Index extends Component
     public function render(): View
     {
         return view('livewire.assessments.index', [
-            'assessments' => $this->getAssessments()
+            'assessments' => $this->getAssessments(),
+            'stats' => $this->stats
         ]);
     }
 }
