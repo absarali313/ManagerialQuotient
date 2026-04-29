@@ -60,7 +60,13 @@ class Index extends Component
     protected function getAssessments(): LengthAwarePaginator
     {
         $query = Assessment::query()
-            ->with(['jobRole', 'assignedTo.department'])
+            ->with([
+                'jobRole', 
+                'evaluationCycle', 
+                'assignedTo.department',
+                'questions.kpi'
+            ])
+            ->withCount('questions')
             ->where('organization_id', auth()->user()->organization_id);
 
         if (!empty($this->search)) {
