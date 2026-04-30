@@ -64,6 +64,24 @@
                 <x-lucide-building class="w-4 h-4" />
                 <span>Departments</span>
             </a>
+            <a href="{{ route('org_teams') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org_teams*"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org_teams*"),
+                ])>
+                <x-lucide-users class="w-4 h-4" />
+                <span>Teams</span>
+            </a>
 
             {{-- INTELLIGENCE Group --}}
             <p class="px-3 pt-5 pb-1.5 text-[10px] font-extrabold text-gray-300 uppercase tracking-widest">Intelligence</p>
@@ -236,6 +254,24 @@
                 ])>
                 <x-lucide-building class="w-4 h-4" />
                 <span>Departments</span>
+            </a>
+            <a wire:navigate href="{{ route('org_teams') }}" @class([
+                    "flex",
+                    "items-center",
+                    "gap-3",
+                    "px-3",
+                    "py-2",
+                    "rounded-xl",
+                    "font-semibold",
+                    "text-sm",
+                    "tracking-tight",
+                    "transition-all",
+                    "mb-0.5",
+                    "bg-[#5D45FD] text-white shadow-md shadow-indigo-100" => request()->routeIs("org_teams*"),
+                    "text-gray-500 hover:bg-gray-50 hover:text-gray-700" => ! request()->routeIs("org_teams*"),
+                ])>
+                <x-lucide-users class="w-4 h-4" />
+                <span>Teams</span>
             </a>
 
             {{-- INTELLIGENCE Group --}}
