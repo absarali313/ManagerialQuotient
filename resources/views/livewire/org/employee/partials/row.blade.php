@@ -132,14 +132,14 @@
                 </button>
 
                 {{-- Edit Role --}}
-                <button
-                    wire:click="editRole({{ $employee->id }})"
-                    @click="open = false"
+                <a
+                    wire:navigate
+                    href="{{ route('org_employees_edit', $employee->id) }}"
                     class="w-full flex items-center gap-2.5 px-3.5 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors text-left"
                 >
                     <x-lucide-briefcase class="w-3.5 h-3.5 text-gray-400" />
-                    Edit Role
-                </button>
+                    Edit Employee
+                </a>
 
                 <div class="border-t border-gray-100 my-1"></div>
 

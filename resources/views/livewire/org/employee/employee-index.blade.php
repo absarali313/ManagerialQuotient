@@ -1,5 +1,4 @@
 <div class="space-y-6">
-
     @include('livewire.org.employee.partials.header')
 
     @include('livewire.org.employee.partials.stats')
