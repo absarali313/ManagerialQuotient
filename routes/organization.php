@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComingSoonController;
 use App\Http\Controllers\OrgDashboardController;
+use App\Http\Controllers\OrgDepartmentController;
 use App\Http\Controllers\OrgEmployeeController;
 use App\Http\Controllers\OrgEmployeeRankingController;
 use App\Livewire\Org\AssessmentsIndex;
@@ -21,7 +22,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
     Route::get('org-rankings', [OrgEmployeeRankingController::class, 'index'])
         ->name('org-rankings');
-    Route::get('org-departments', ComingSoonController::class)->name('org-departments');
+    Route::controller(OrgDepartmentController::class)->group(function () {
+        Route::get('org-departments', 'index')->name('org_departments');
+        Route::get('org-departments/create', 'create')->name('org_departments_create');
+        Route::get('org-departments/{department}/edit', 'edit')->name('org_departments_edit');
+    });
 
     // ── Intelligence ─────────────────────────────────────────────────────────
     Route::get('org-assessments', AssessmentsIndex::class)->name('org-assessments');
