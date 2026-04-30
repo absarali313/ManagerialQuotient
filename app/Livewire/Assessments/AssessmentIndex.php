@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class Index extends Component
+class AssessmentIndex extends Component
 {
     use WithPagination;
 
@@ -36,7 +36,7 @@ class Index extends Component
         }
 
         $assessment->delete();
-        session()->flash('success', 'Assessment deleted successfully.');
+        $this->dispatch('notify',message: 'Assessment deleted!', type: 'success');
     }
 
     /**
@@ -87,7 +87,7 @@ class Index extends Component
 
     public function render(): View
     {
-        return view('livewire.assessments.AssessmentIndex', [
+        return view('livewire.assessments.assessment-index', [
             'assessments' => $this->getAssessments(),
             'stats' => $this->stats
         ]);

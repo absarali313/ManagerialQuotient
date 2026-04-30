@@ -1,3 +1,3 @@
 <x-layouts.dashboard>
-    @livewire('assessments.index')
+    @livewire('assessments.AssessmentIndex')
 </x-layouts.dashboard>
