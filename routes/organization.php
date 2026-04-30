@@ -5,6 +5,7 @@ use App\Http\Controllers\OrgDashboardController;
 use App\Http\Controllers\OrgDepartmentController;
 use App\Http\Controllers\OrgEmployeeController;
 use App\Http\Controllers\OrgEmployeeRankingController;
+use App\Http\Controllers\OrgTeamController;
 use App\Livewire\Org\AssessmentsIndex;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('org-departments', 'index')->name('org_departments');
         Route::get('org-departments/create', 'create')->name('org_departments_create');
         Route::get('org-departments/{department}/edit', 'edit')->name('org_departments_edit');
+    });
+    Route::controller(OrgTeamController::class)->group(function () {
+        Route::get('org-teams', 'index')->name('org_teams');
+        Route::get('org-teams/create', 'create')->name('org_teams_create');
+        Route::get('org-teams/{team}/edit', 'edit')->name('org_teams_edit');
     });
 
     // ── Intelligence ─────────────────────────────────────────────────────────

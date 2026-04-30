@@ -26,6 +26,8 @@ class EmployeeSave extends Component
 
     public ?int $departmentId = null;
 
+    public ?int $teamId = null;
+
     public ?int $jobRoleId = null;
 
     public bool $isActive = true;
@@ -43,6 +45,7 @@ class EmployeeSave extends Component
             $this->phone = $employee->phone;
             $this->employeeId = $employee->employee_id;
             $this->departmentId = $employee->department_id;
+            $this->teamId = $employee->team_id;
             $this->jobRoleId = $employee->job_role_id;
             $this->isActive = $employee->is_active;
             $this->systemRole = $employee->system_role ?? 'employee';
@@ -52,6 +55,11 @@ class EmployeeSave extends Component
     public function getDepartmentsProperty(): Collection
     {
         return Department::where('organization_id', $this->organizationId())->orderBy('name')->get();
+    }
+
+    public function getTeamsProperty(): Collection
+    {
+        return \App\Models\Team::where('organization_id', $this->organizationId())->orderBy('name')->get();
     }
 
     public function getJobRolesProperty(): Collection
@@ -74,6 +82,7 @@ class EmployeeSave extends Component
             'phone' => ['nullable', 'string', 'max:255'],
             'employeeId' => ['nullable', 'string', 'max:255'],
             'departmentId' => ['nullable', 'exists:departments,id'],
+            'teamId' => ['nullable', 'exists:teams,id'],
             'jobRoleId' => ['nullable', 'exists:job_roles,id'],
             'isActive' => ['boolean'],
             'systemRole' => ['required', 'in:employee,manager,hr,org_admin'],
@@ -88,6 +97,7 @@ class EmployeeSave extends Component
             'phone' => $validated['phone'],
             'employee_id' => $validated['employeeId'],
             'department_id' => $validated['departmentId'],
+            'team_id' => $validated['teamId'],
             'job_role_id' => $validated['jobRoleId'],
             'is_active' => $validated['isActive'],
             'system_role' => $validated['systemRole'],
