@@ -1,8 +1,10 @@
 <?php
 
-use App\Livewire\Org\AssessmentsIndex;
-use App\Http\Controllers\OrgDashboardController;
 use App\Http\Controllers\ComingSoonController;
+use App\Http\Controllers\OrgDashboardController;
+use App\Http\Controllers\OrgEmployeeController;
+use App\Http\Controllers\OrgEmployeeRankingController;
+use App\Livewire\Org\AssessmentsIndex;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -12,19 +14,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('org-dashboard');
 
     // ── Main ─────────────────────────────────────────────────────────────────
-    Route::get('org-employees', [\App\Http\Controllers\OrgEmployeeController::class, 'index'])
-        ->name('org-employees');
-    Route::get('org-employees/create', \App\Livewire\Org\EmployeeForm::class)
-        ->name('org-employees.create');
-    Route::get('org-employees/{employee}/edit', \App\Livewire\Org\EmployeeForm::class)
-        ->name('org-employees.edit');
-    Route::get('org-rankings', [\App\Http\Controllers\OrgEmployeeRankingController::class, 'index'])
+    Route::controller(OrgEmployeeController::class)->group(function () {
+        Route::get('org-employees', 'index')->name('org-employees');
+        Route::get('org-employees/create', 'create')->name('org_employees_create');
+        Route::get('org-employees/{employee}/edit', 'edit')->name('org_employees_edit');
+    });
+    Route::get('org-rankings', [OrgEmployeeRankingController::class, 'index'])
         ->name('org-rankings');
     Route::get('org-departments', ComingSoonController::class)->name('org-departments');
 
     // ── Intelligence ─────────────────────────────────────────────────────────
     Route::get('org-assessments', AssessmentsIndex::class)->name('org-assessments');
-//    Route::get('org-employees', ComingSoonController::class)->name('org-employees');
+    //    Route::get('org-employees', ComingSoonController::class)->name('org-employees');
     Route::get('org-ai-insights', ComingSoonController::class)->name('org-ai-insights');
 
     // ── System ───────────────────────────────────────────────────────────────

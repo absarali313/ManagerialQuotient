@@ -5,7 +5,7 @@
     </div>
     <a
         wire:navigate
-        href="{{ route('org-employees.create') }}"
+        href="{{ route('org_employees_create') }}"
         class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#5D45FD] text-white text-sm font-bold hover:bg-[#4c38e0] transition-colors shadow-sm"
     >
         <x-lucide-user-plus class="w-4 h-4" />
