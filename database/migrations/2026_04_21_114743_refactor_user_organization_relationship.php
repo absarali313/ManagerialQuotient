@@ -16,7 +16,7 @@ return new class extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('user_type', ['organization', 'employee'])->default('employee')->after('id');
+            $table->enum('user_type', ['org', 'employee'])->default('employee')->after('id');
         });
     }
 

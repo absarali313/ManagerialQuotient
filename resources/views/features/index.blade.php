@@ -1,6 +1,6 @@
 <x-frontend-layout>
     <div class="space-y-28 pb-32">
-        
+
         <!-- Hero Section -->
         <section class="relative pt-12 overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 lg:px-0">
@@ -24,7 +24,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="lg:w-1/2 mt-10 lg:mt-0 relative">
                         <div class="relative z-10 bg-white/40 p-1 rounded-3xl shadow-lg backdrop-blur-sm border border-white/40 max-w-md mx-auto lg:ml-auto">
                             <img src="{{ asset('assets/images/dashboard_mockup.jpg') }}" alt="MQ Enterprise Dashboard" class="rounded-2xl shadow-inner w-full">

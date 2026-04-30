@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class OrgDashboardController extends Controller
+class OrgEmployeeRankingController extends Controller
 {
     /**
      * Display the org dashboard.
      */
     public function index(): View
     {
-        return view('org-dashboard.index');
+        return view('organization.employees');
     }
 }

@@ -40,7 +40,7 @@ class FullSystemSeeder extends Seeder
         $orgAdmin = User::updateOrCreate(['email' => 'admin@mqelevate.com'], [
             'name' => 'MQ Elevate Admin',
             'password' => Hash::make('password'),
-            'user_type' => 'organization',
+            'user_type' => 'org',
             'system_role' => 'org_admin',
             'is_active' => true,
         ]);
@@ -259,7 +259,7 @@ class FullSystemSeeder extends Seeder
             EmployeeRanking::updateOrCreate([
                 'user_id' => $user->id,
                 'evaluation_cycle_id' => $cycle->id,
-                'scope' => 'organization',
+                'scope' => 'org',
             ], [
                 'organization_id' => $org->id,
                 'scope_id' => null,
