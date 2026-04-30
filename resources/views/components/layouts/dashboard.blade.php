@@ -22,7 +22,7 @@
 
         <!-- Main Content -->
         <div class="flex-1 ml-60 flex flex-col min-h-screen">
-            @include('layouts.partials.navbar')
+            <livewire:org.navbar />
 
             <main class="flex-1 p-8">
                 {{ $slot }}

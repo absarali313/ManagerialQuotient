@@ -1,0 +1,95 @@
+<?php
+
+namespace App\Livewire\Assessments;
+
+use App\Models\Assessment;
+use Livewire\Component;
+use Livewire\WithPagination;
+use Illuminate\Contracts\View\View;
+use Illuminate\Pagination\LengthAwarePaginator;
+
+class AssessmentIndex extends Component
+{
+    use WithPagination;
+
+    public string $search = '';
+
+    protected $listeners = [
+        'search-updated' => 'updateSearchFromEvent'
+    ];
+
+    public function updateSearchFromEvent($search): void
+    {
+        $this->search = $search;
+        $this->resetPage();
+    }
+
+    public function updatedSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function deleteAssessment(Assessment $assessment): void
+    {
+        if ($assessment->organization_id !== auth()->user()->organization_id) {
+            return;
+        }
+
+        $assessment->delete();
+        $this->dispatch('notify',message: 'Assessment deleted!', type: 'success');
+    }
+
+    /**
+     * Get assessment statistics for the organization.
+     */
+    public function getStatsProperty(): array
+    {
+        $baseQuery = Assessment::where('organization_id', auth()->user()->organization_id);
+
+        return [
+            'total' => (clone $baseQuery)->count(),
+            'completed' => (clone $baseQuery)->where('status', 'completed')->count(),
+            'active' => (clone $baseQuery)->whereIn('status', ['pending', 'in_progress'])->count(),
+            'org_size' => \App\Models\User::where('organization_id', auth()->user()->organization_id)->count(),
+        ];
+    }
+
+    /**
+     * Get the filtered assessments from the database.
+     */
+    protected function getAssessments(): LengthAwarePaginator
+    {
+        $query = Assessment::query()
+            ->with([
+                'jobRole',
+                'evaluationCycle',
+                'assignedTo.department',
+                'questions.kpi'
+            ])
+            ->withCount('questions')
+            ->where('organization_id', auth()->user()->organization_id);
+
+        if (!empty($this->search)) {
+            $query->where(function ($q) {
+                $q->whereHas('jobRole', function ($inner) {
+                    $inner->where('title', 'like', '%' . $this->search . '%');
+                })->orWhereHas('assignedTo', function ($inner) {
+                    $inner->where('name', 'like', '%' . $this->search . '%')
+                        ->orWhereHas('department', function ($dept) {
+                            $dept->where('name', 'like', '%' . $this->search . '%');
+                        });
+                });
+            });
+        }
+
+        return $query->latest()->paginate(10);
+    }
+
+    public function render(): View
+    {
+        return view('livewire.assessments.assessment-index', [
+            'assessments' => $this->getAssessments(),
+            'stats' => $this->stats
+        ]);
+    }
+}

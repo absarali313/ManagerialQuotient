@@ -19,8 +19,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('org-departments', ComingSoonController::class)->name('org-departments');
 
     // ── Intelligence ─────────────────────────────────────────────────────────
-    Route::get('org-assessments', AssessmentsIndex::class)->name('org-assessments');
-//    Route::get('org-employees', ComingSoonController::class)->name('org-employees');
+    Route::get('org-assessments', function () {
+        return view('assessments.index');
+    })->name('org-assessments');
+  
+    Route::get('org-rankings', ComingSoonController::class)->name('org-rankings');
     Route::get('org-ai-insights', ComingSoonController::class)->name('org-ai-insights');
 
     // ── System ───────────────────────────────────────────────────────────────
