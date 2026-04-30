@@ -61,8 +61,8 @@ class Index extends Component
     {
         $query = Assessment::query()
             ->with([
-                'jobRole', 
-                'evaluationCycle', 
+                'jobRole',
+                'evaluationCycle',
                 'assignedTo.department',
                 'questions.kpi'
             ])
@@ -87,7 +87,7 @@ class Index extends Component
 
     public function render(): View
     {
-        return view('livewire.assessments.index', [
+        return view('livewire.assessments.AssessmentIndex', [
             'assessments' => $this->getAssessments(),
             'stats' => $this->stats
         ]);
