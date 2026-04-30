@@ -74,16 +74,6 @@ class EmployeeIndex extends Component
 
     // ── Actions ───────────────────────────────────────────────────────────────
 
-    public function invite(): void
-    {
-        $this->dispatch('openModal', 'org.employees.invite');
-    }
-
-    public function editRole(int $userId): void
-    {
-        $this->dispatch('openModal', 'org.employees.edit-role', ['userId' => $userId]);
-    }
-
     public function deactivate(int $userId): void
     {
         $employee = $this->resolveEmployee($userId);

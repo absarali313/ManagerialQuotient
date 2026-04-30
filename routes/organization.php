@@ -14,6 +14,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // ── Main ─────────────────────────────────────────────────────────────────
     Route::get('org-employees', [\App\Http\Controllers\OrgEmployeeController::class, 'index'])
         ->name('org-employees');
+    Route::get('org-employees/create', \App\Livewire\Org\EmployeeForm::class)
+        ->name('org-employees.create');
+    Route::get('org-employees/{employee}/edit', \App\Livewire\Org\EmployeeForm::class)
+        ->name('org-employees.edit');
     Route::get('org-rankings', [\App\Http\Controllers\OrgEmployeeRankingController::class, 'index'])
         ->name('org-rankings');
     Route::get('org-departments', ComingSoonController::class)->name('org-departments');
